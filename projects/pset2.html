@@ -63,8 +63,68 @@
         <li><strong>Neighborhoods & zip codes:</strong> a lookup table used for reference/joins when needed.</li>
       </ul>
 
-		</section>
+	<p class="note">
+        <strong>Important note on measurement:</strong> Corporate ownership is inferred via keyword matching in owner names
+        (e.g., “LLC”, “Trust”), which may undercount or misclassify some owners. Owner-occupancy and corporate ownership
+        are expressed as rates (0–1) at the neighborhood-year level.
+      </p>
+    </section>
 
+    <!-- ===================== -->
+    <!-- 2) DATA OVERVIEW        -->
+    <!-- ===================== -->
+
+    <section>
+      <h2>2. Data Overview & Quality Checks</h2>
+
+      <p>
+        Before analyzing the research questions, I first examined the dataset structure (neighborhood-year records),
+        checked coverage across years and neighborhoods, and inspected distributions and potential data quality issues
+        (e.g., missingness, outliers, and unexpected discontinuities over time).
+      </p>
+
+      <h3>Visualization 0-a: Dataset coverage / missingness</h3>
+      <figure>
+        <img src="pset2figures/FIGURE_0A_coverage_missingness.png" alt="Dataset coverage and missingness by field or year" />
+        <figcaption>
+          Caption: (2–4 sentences) Describe how complete the dataset is across years/neighborhoods and whether key fields
+          have missing values. Note any coverage gaps that could affect later comparisons (e.g., missing years or neighborhoods).
+        </figcaption>
+      </figure>
+
+      <h3>Visualization 0-b: Distribution of corporate ownership rate (example year: 2024)</h3>
+      <figure>
+        <img src="pset2figures/FIGURE_0B_corp_own_distribution_2024.png" alt="Distribution of corporate ownership rate in 2024" />
+        <figcaption>
+          Caption: Describe the shape (e.g., skew), typical range, and outliers for corporate ownership rates in 2024.
+          Explain why this matters for later analysis (e.g., a few neighborhoods may drive overall patterns).
+        </figcaption>
+      </figure>
+
+      <h3>Visualization 0-c: Distribution of owner-occupancy rate (example year: 2024)</h3>
+      <figure>
+        <img src="pset2figures/FIGURE_0C_owner_occ_distribution_2024.png" alt="Distribution of owner-occupancy rate in 2024" />
+        <figcaption>
+          Caption: Describe the spread of owner-occupancy rates and note which neighborhoods appear to be outliers
+          (very low or very high). Mention any “gut check” expectations (e.g., central/student-heavy areas may cluster low).
+        </figcaption>
+      </figure>
+
+      <h3>Visualization 0-d: Citywide trend (2004–2024)</h3>
+      <figure>
+        <img src="pset2figures/FIGURE_0D_citywide_trend.png" alt="Citywide average trends in corporate ownership and owner occupancy, 2004–2024" />
+        <figcaption>
+          Caption: Summarize the overall direction of change for corporate ownership and owner-occupancy across the
+          20-year period. Note any inflection points (e.g., post-2015 acceleration) and whether the two series appear
+          inversely related.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 3) DISCOVERIES / INSIGHTS -->
+    <!-- ===================== -->
+	
 		<section>
 			<h2>Discoveries & Insights</h2>
 
