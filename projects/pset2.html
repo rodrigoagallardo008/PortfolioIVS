@@ -125,85 +125,175 @@
     <!-- 3) DISCOVERIES / INSIGHTS -->
     <!-- ===================== -->
 	
-		<section>
-			<h2>Discoveries & Insights</h2>
+    <section>
+      <h2>3. Discoveries & Insights</h2>
 
-			<figure>
-				<img src="pset2figures/Figure 1.png" alt="" />
-				<figcaption>
-				ENTER IMAGE CAPTION HERE.
-				</figcaption>
-			</figure>
+      <!-- --------------------- -->
+      <!-- RQ1 -->
+      <!-- --------------------- -->
+      <h3>Research Question 1: How have corporate ownership and owner-occupancy rates changed across Boston neighborhoods from 2004–2024?</h3>
+      <p>
+        This section examines long-run ownership trends, looking for citywide shifts and neighborhood-level variation.
+        I begin with overall trends, then zoom into neighborhoods with the largest changes.
+      </p>
 
-			<figure>
-				<img src="pset2figures/FIGURE 2.png" alt="" />
-				<figcaption>
-				ENTER IMAGE CAPTION HERE.
-				</figcaption>
-			</figure>
+      <h4>Visualization 1-a: Neighborhood trends over time (all neighborhoods)</h4>
+      <figure>
+        <img src="pset2figures/Figure 1.png" alt="Ownership trends over time across all neighborhoods" />
+        <figcaption>
+          Caption: Describe the overall pattern across neighborhoods (e.g., whether most neighborhoods increase in corporate ownership).
+          Highlight any periods of acceleration or divergence among neighborhoods.
+        </figcaption>
+      </figure>
 
-			<figure>
-				<img src="IMAGE_FILENAME" alt="" />
-				<figcaption>
-				ENTER IMAGE CAPTION HERE.
-				</figcaption>
-			</figure>
+      <h4>Visualization 1-b: Dual trend example (selected neighborhoods)</h4>
+      <figure>
+        <img src="pset2figures/FIGURE_1B_selected_dual_trends.png" alt="Selected neighborhoods showing corporate ownership and owner occupancy trends side-by-side" />
+        <figcaption>
+          Caption: Explain why you selected these neighborhoods (e.g., largest increases, different baseline types).
+          Note whether corporate ownership increases coincide with declines in owner-occupancy.
+        </figcaption>
+      </figure>
 
-			<figure>
-				<img src="IMAGE_FILENAME" alt="" />
-				<figcaption>
-				ENTER IMAGE CAPTION HERE.
-				</figcaption>
-			</figure>
+      <h4>Visualization 1-c: Largest changes from 2004 to 2024</h4>
+      <figure>
+        <img src="pset2figures/FIGURE_1C_delta_bar.png" alt="Bar chart of change in corporate ownership (and/or owner occupancy) from 2004 to 2024 by neighborhood" />
+        <figcaption>
+          Caption: Identify which neighborhoods experienced the largest increases in corporate ownership (and/or the largest declines in owner-occupancy).
+          Briefly interpret what these “fast-change” neighborhoods suggest about where ownership restructuring is concentrated.
+        </figcaption>
+      </figure>
 
-			<figure>
-				<img src="IMAGE_FILENAME" alt="" />
-				<figcaption>
-				ENTER IMAGE CAPTION HERE.
-				</figcaption>
-			</figure>
+      <!-- --------------------- -->
+      <!-- RQ2 -->
+      <!-- --------------------- -->
+      <h3>Research Question 2: Are neighborhoods with higher shares of Black and Hispanic residents associated with lower owner-occupancy or higher corporate ownership?</h3>
+      <p>
+        To explore equity implications, I compare ownership measures to neighborhood racial/ethnic composition.
+        I compute demographic shares (e.g., % Black = black_all / tot_pop_all) and examine associations and outliers.
+      </p>
 
-			<figure>
-				<img src="IMAGE_FILENAME" alt="" />
-				<figcaption>
-				ENTER IMAGE CAPTION HERE.
-				</figcaption>
-			</figure>
+      <h4>Visualization 2-a: Corporate ownership vs % Black (example year: 2024)</h4>
+      <figure>
+        <img src="pset2figures/FIGURE_2A_corp_vs_pct_black_2024.png" alt="Scatterplot of corporate ownership vs percent Black residents, 2024" />
+        <figcaption>
+          Caption: Describe whether neighborhoods with higher % Black residents tend to show higher corporate ownership.
+          Call out notable outliers and explain what follow-up checks you would do (e.g., control for housing units or vacancy).
+        </figcaption>
+      </figure>
 
-			<figure>
-				<img src="IMAGE_FILENAME" alt="" />
-				<figcaption>
-				ENTER IMAGE CAPTION HERE.
-				</figcaption>
-			</figure>
+      <h4>Visualization 2-b: Corporate ownership vs % Hispanic (example year: 2024)</h4>
+      <figure>
+        <img src="pset2figures/FIGURE_2B_corp_vs_pct_hisp_2024.png" alt="Scatterplot of corporate ownership vs percent Hispanic residents, 2024" />
+        <figcaption>
+          Caption: Compare this pattern to the % Black plot. Note whether the association appears stronger/weaker and what that suggests
+          about how ownership restructuring aligns with demographic concentration.
+        </figcaption>
+      </figure>
 
-			<figure>
-				<img src="IMAGE_FILENAME" alt="" />
-				<figcaption>
-				ENTER IMAGE CAPTION HERE.
-				</figcaption>
-			</figure>
+      <h4>Visualization 2-c: Binned comparison (ownership by demographic tier)</h4>
+      <figure>
+        <img src="pset2figures/FIGURE_2C_binned_demographic_tiers.png" alt="Bar chart comparing average corporate ownership or owner occupancy across demographic tiers" />
+        <figcaption>
+          Caption: Explain how you binned neighborhoods (e.g., terciles of % residents of color). Summarize whether differences across tiers
+          are meaningful and how this supports or complicates the subtheme’s equity framing.
+        </figcaption>
+      </figure>
 
-			<figure>
-				<img src="IMAGE_FILENAME" alt="" />
-				<figcaption>
-				ENTER IMAGE CAPTION HERE.
-				</figcaption>
-			</figure>
+      <!-- --------------------- -->
+      <!-- RQ3 -->
+      <!-- --------------------- -->
+      <h3>Research Question 3: Is higher corporate ownership associated with lower housing stability indicators (e.g., vacancy rate or lower owner-occupancy)?</h3>
+      <p>
+        This section uses vacancy rate as a structural indicator that may reflect market churn or disinvestment.
+        I compute vacancy rate as vacant_unit / tot_unit and examine how it relates to corporate ownership and owner-occupancy.
+      </p>
 
-			<figure>
-				<img src="IMAGE_FILENAME" alt="" />
-				<figcaption>
-				ENTER IMAGE CAPTION HERE.
-				</figcaption>
-			</figure>
-		</section>
+      <h4>Visualization 3-a: Vacancy rate vs corporate ownership (example year: 2024)</h4>
+      <figure>
+        <img src="pset2figures/FIGURE_3A_vacancy_vs_corp_2024.png" alt="Scatterplot of vacancy rate vs corporate ownership, 2024" />
+        <figcaption>
+          Caption: Describe whether higher corporate ownership aligns with higher vacancy (or not). Note any neighborhoods that break the pattern,
+          and what that suggests about different “types” of corporate ownership (e.g., high-demand vs disinvested areas).
+        </figcaption>
+      </figure>
 
-		<section>
-			<h2>Summary</h2>
+      <h4>Visualization 3-b: Vacancy rate vs owner-occupancy (example year: 2024)</h4>
+      <figure>
+        <img src="pset2figures/FIGURE_3B_vacancy_vs_ownerocc_2024.png" alt="Scatterplot of vacancy rate vs owner-occupancy, 2024" />
+        <figcaption>
+          Caption: Interpret how owner-occupancy relates to vacancy. If neighborhoods with low owner-occupancy show higher vacancy,
+          explain why that might matter for housing stability, while noting that vacancy is not the same as eviction.
+        </figcaption>
+      </figure>
 
-			<p>WRITE FINAL SUMMARY HERE.</p>
-		</section>
-	</main>
+      <!-- --------------------- -->
+      <!-- RQ4 -->
+      <!-- --------------------- -->
+      <h3>Research Question 4: Do neighborhoods experiencing population growth or housing unit expansion also show faster increases in corporate ownership?</h3>
+      <p>
+        To test whether corporate ownership growth tracks neighborhood change, I compare shifts in corporate ownership to changes
+        in total population and housing units over the 2004–2024 period. I compute percent change in population and units, and
+        compare these to the change in corporate ownership rate.
+      </p>
+
+      <h4>Visualization 4-a: Change in corporate ownership vs change in housing units (2004→2024)</h4>
+      <figure>
+        <img src="pset2figures/FIGURE_4A_delta_corp_vs_delta_units.png" alt="Scatterplot of change in corporate ownership vs change in housing units from 2004 to 2024" />
+        <figcaption>
+          Caption: Describe whether neighborhoods adding housing units also show larger corporate ownership increases.
+          Note whether the relationship looks linear, clustered, or driven by a few high-growth outliers.
+        </figcaption>
+      </figure>
+
+      <h4>Visualization 4-b: Change in corporate ownership vs change in population (2004→2024)</h4>
+      <figure>
+        <img src="pset2figures/FIGURE_4B_delta_corp_vs_delta_pop.png" alt="Scatterplot of change in corporate ownership vs change in population from 2004 to 2024" />
+        <figcaption>
+          Caption: Interpret whether corporate ownership growth corresponds to population growth, or whether corporate ownership rises even where
+          population is stable/declining. Briefly state what hypothesis this suggests for future analysis.
+        </figcaption>
+      </figure>
+    </section>
+
+
+    <!-- ===================== -->
+    <!-- 4) METHODS NOTES        -->
+    <!-- ===================== -->
+    <section class="methods">
+      <h2>4. Methods Notes (Data Transformations)</h2>
+      <ul>
+        <li><strong>Percent demographic shares:</strong> computed as group population / total population (e.g., black_all / tot_pop_all).</li>
+        <li><strong>Vacancy rate:</strong> computed as vacant_unit / tot_unit.</li>
+        <li><strong>Change metrics (2004→2024):</strong> computed as 2024 value − 2004 value for rates, and percent change for population/units where appropriate.</li>
+        <li><strong>Binning:</strong> some comparisons use terciles/quartiles of demographic shares or ownership rates to summarize group differences.</li>
+      </ul>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 5) SUMMARY              -->
+    <!-- ===================== -->
+    <section>
+      <h2>5. Summary</h2>
+      <p>
+        <strong>Main takeaways:</strong> (Replace with 5–8 bullets or a short paragraph.)
+      </p>
+      <ul>
+        <li>Write 1–2 sentences summarizing the biggest citywide trend(s) you observed.</li>
+        <li>Identify which neighborhoods changed the most, and whether there were inflection points over time.</li>
+        <li>Summarize any demographic alignment patterns (or note mixed/weak evidence if that’s what you found).</li>
+        <li>Summarize how vacancy relates (or does not relate) to corporate ownership and owner-occupancy.</li>
+        <li>Summarize whether growth/units expansion aligns with corporate ownership increases.</li>
+        <li>Limitations: corporate ownership classification is approximate; neighborhood aggregation may mask within-area variation.</li>
+        <li>Next question: state one follow-up you would explore next (e.g., tract-level eviction data; adding rent/income if available).</li>
+      </ul>
+    </section>
+  </main>
+    <!-- ===================== -->
+    <!-- FOOTER                 -->
+    <!-- ===================== -->
+	<footer>
+		<p>&copy; 2026 Rodrigo Gallardo</p>
+	</footer>
 </body>
 </html>
