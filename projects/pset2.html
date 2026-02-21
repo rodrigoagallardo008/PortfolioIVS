@@ -55,29 +55,54 @@
     <!-- 1) INTRODUCTION        -->
     <!-- ===================== -->
 
-	    <h2>1. Introduction</h2>
+      <h2>1. Introduction</h2>
       <p>
-        Housing stability is shaped not only by rents and income, but also by who owns residential property. Corporate
-        and absentee ownership can change the incentives and decision-making structures around housing, potentially
-        affecting neighborhood stability over time. This report explores neighborhood-level changes in corporate
-        ownership and owner-occupancy across Boston from 2004 to 2024, using property assessment–derived rates combined
-        with neighborhood Census fields (population, race/ethnicity counts, and housing unit counts).
+        Housing stability is shaped not only by rents and income, but also by who owns residential property. Corporate and
+        absentee ownership can change incentives around rent collection, turnover, and long-term investment, which may affect
+        neighborhood stability over time. This report explores neighborhood-level changes in corporate ownership and
+        owner-occupancy across Boston from 2004 to 2024, combining property assessment–derived rates with neighborhood Census fields
+        (population, race/ethnicity counts, and housing unit counts).
       </p>
 
       <p>
-        The goal of this analysis is exploratory rather than causal. I use visualizations to describe long-run trends,
-        identify spatial concentration and outliers, and test whether ownership measures line up with neighborhood
-        demographic composition and a structural housing indicator (vacancy). These patterns help generate plausible
-        hypotheses and guide what deeper analysis would be needed to evaluate eviction-related questions more directly.
+        The goal of this analysis is exploratory rather than causal. I use visualizations to describe long-run trends, identify
+        spatial concentration and outliers, and test whether ownership measures align with demographic composition and a housing
+        stability proxy (vacancy). These patterns help generate hypotheses and clarify what additional data would be needed to evaluate
+        eviction-related outcomes more directly.
       </p>
 
-			<h3>Overall Analysis Questions</h3>
-			<ol>
-				<li>How have corporate ownership and owner-occupancy rates changed across Boston neighborhoods from 2004–2024?</li>
-				<li>Are neighborhoods with higher shares of Black and Hispanic residents associated with lower owner-occupancy or higher corporate ownership?</li>
-				<li>Is higher corporate ownership associated with lower housing stability indicators (e.g., vacancy rate or lower owner-occupancy)?</li>
-				<li>Do neighborhoods experiencing population growth or housing unit expansion also show faster increases in corporate ownership?</li>
-			</ol>
+      <h3>Motivation from the readings</h3>
+      <p>
+        The Eviction Lab’s national record analysis emphasizes that eviction is widespread, spatially concentrated, and linked to broader
+        instability for families and communities (Badger &amp; Bui, 2018). In Massachusetts, Homes for All argues that corporate and absentee
+        landlords filed more evictions during COVID and that communities of color faced disproportionate exposure (Homes for All MA &amp; Huntley, 2022).
+        Because my dataset does not include eviction filings, I focus on ownership structure and neighborhood context as upstream conditions that may
+        relate to eviction risk.
+      </p>
+
+      <h3>Overall Analysis Questions (with motivation)</h3>
+      <ol>
+        <li>
+          <strong>How have corporate ownership and owner-occupancy rates changed across Boston neighborhoods from 2004–2024?</strong>
+          The MA report highlights corporate landlords as key eviction filers during COVID, so it is important to see whether corporate ownership has been
+          increasing structurally over time. If corporate ownership rises citywide but unevenly, that can help identify where potential exposure may be growing.
+        </li>
+        <li>
+          <strong>Which neighborhoods experienced the largest shifts in ownership structure between 2004 and 2024?</strong>
+          National eviction records show that housing instability clusters spatially, not uniformly. Identifying the largest “movers” in corporate ownership helps
+          pinpoint neighborhoods where investor expansion may be most concentrated.
+        </li>
+        <li>
+          <strong>Are neighborhoods with higher shares of Black and Hispanic residents associated with higher corporate ownership or lower owner-occupancy?</strong>
+          Both readings emphasize racial disparities in eviction exposure, especially for Black and Latinx communities. This question checks whether Boston’s ownership
+          structure overlaps with neighborhoods that are cultural and demographic hubs, such as Roxbury and East Boston.
+        </li>
+        <li>
+          <strong>Is higher corporate ownership associated with housing instability indicators (e.g., higher vacancy or lower owner-occupancy)?</strong>
+          Eviction is one outcome of instability, but not the only signal. Since this dataset lacks eviction filings, vacancy and owner-occupancy serve as descriptive proxies
+          that can flag neighborhoods with higher turnover, speculative holding, or weaker local control.
+        </li>
+      </ol>
 
       <h3>Data used</h3>
       <ul>
