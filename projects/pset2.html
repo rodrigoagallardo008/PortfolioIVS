@@ -121,57 +121,48 @@
     <!-- ===================== -->
     <!-- 2) DATA OVERVIEW        -->
     <!-- ===================== -->
-
     <section>
       <h2>2. Data Overview &amp; Quality Checks</h2>
 
       <p>
-        Before addressing the research questions, I inspected the dataset structure (neighborhood-year records),
-        verified coverage across years and neighborhoods, and checked for potential data quality issues such as
-        missingness, outliers, and abrupt discontinuities. This step helped confirm what the dataset can reliably
-        support and flagged fields that may require caution during interpretation.
+        Before addressing the research questions, I inspected the dataset structure (neighborhood-year records), verified coverage across years and neighborhoods,
+        and checked for potential data quality issues such as missingness and abrupt discontinuities. This step helps confirm what the dataset can reliably support.
+        It also flags fields that may require caution during interpretation.
       </p>
 
-      <h3>Visualization 0-a: Dataset coverage / missingness</h3>
-      <figure>
+      <h3>Visualization 0-A: Dataset coverage / missingness</h3>
+      <figure class="half">
         <img src="pset2figures/Visualization 0A.png" alt="Dataset coverage and missingness by field or year" />
         <figcaption>
-          For this first exploratory view, I focused on understanding what the dataset contains and whether anything
-          looked “off” at a glance. I scanned for unusually high or low values, abrupt year-to-year jumps, and gaps
-          that might indicate missing records or inconsistencies—flagging potential anomalies worth double-checking
-          before moving into deeper analysis.
+          This view checks whether the dataset covers the full 2004–2024 window and the expected set of neighborhoods. I scanned for missing years, missing neighborhoods,
+          and abrupt jumps that might indicate measurement changes. The goal is to avoid building conclusions on gaps or obvious anomalies.
         </figcaption>
       </figure>
 
-      <h3>Visualization 0-b: Distribution of corporate ownership rate (example year: 2024)</h3>
-      <figure>
+      <h3>Visualization 0-B: Corporate ownership rate (example year: 2024)</h3>
+      <figure class="half">
         <img src="pset2figures/Visualization 0B.png" alt="Distribution of corporate ownership rate in 2024" />
         <figcaption>
-          To ground later comparisons, I looked up where neighborhoods sit geographically and selected six that provide
-          a broad cross-section of Boston (central, north, east, south, and outer-edge areas). This set is used as a
-          consistent reference point across later trend views so comparisons are not driven only by the highest or
-          lowest values.
+          This visualization situates where neighborhoods fall in 2024 and provides a quick distributional baseline. I use it to identify a spread of neighborhoods for comparison,
+          rather than focusing only on extremes. This helps keep later trend interpretations grounded.
         </figcaption>
       </figure>
 
-      <h3>Visualization 0-c: Distribution of owner-occupancy rate (example year: 2024)</h3>
-      <figure>
+      <h3>Visualization 0-C: Owner-occupancy rate (example year: 2024)</h3>
+      <figure class="half">
         <img src="pset2figures/Visualization Owner Occupancy Top.png" alt="Distribution of owner-occupancy rate in 2024" />
         <figcaption>
-          Here I wanted to visulize quickly what the nieghborhood has the highest Owner occucpancy rate, just to get
-          a general idea of what I was looking for, or if this couud give m abette undersntaind. Here WEst Roxbury, Rosindae and Hyde PArk 
-          are shown to to be the higheres with OWner Occupancy all of which can be catergorized as somwheat suburnan areas. 
-          THis was usefeul in that now I knew that i was looking at the differnec of inner and outer Boston to some degree. 
+          This treemap highlights which neighborhoods have the highest owner-occupancy in 2024. West Roxbury, Roslindale, and Hyde Park appear among the highest,
+          and these areas are generally farther from the central core. This helped frame later comparisons between “outer” and “central” Boston.
         </figcaption>
       </figure>
 
-      <h3>Visualization 0-d: Citywide trend (2004–2024)</h3>
-      <figure>
-        <img src="pset2figures/Neighborhood Corp Ownership.png" alt="Citywide average trends in corporate ownership and owner occupancy, 2004–2024" />
+      <h3>Visualization 0-D: Citywide trend (2004–2024)</h3>
+      <figure class="half">
+        <img src="pset2figures/Neighborhood Corp Ownership.png" alt="Citywide average trends in corporate ownership and owner-occupancy, 2004–2024" />
         <figcaption>
-          Citywide averages show corporate ownership in all msot neighbrhods happening around the late 2010's which was clae that whias was pretty 
-          relevant conclusion to most neighbohroods. Here it also made it super easy to be abel to see what some neightboof like Hyde park actually had less
-          Coirporate ownersherop, whicile other like Fenway and WOru Boortn water front had a large amounto of corporate owner ship 
+          Citywide averages show corporate ownership rising over time, with acceleration beginning in the late 2010s. This provides a simple macro pattern to compare against
+          neighborhood-level variation. It also motivates looking for neighborhoods that deviate strongly from the average trend.
         </figcaption>
       </figure>
     </section>
@@ -179,224 +170,206 @@
     <!-- ===================== -->
     <!-- 3) DISCOVERIES / INSIGHTS -->
     <!-- ===================== -->
-<section>
-  <h2>3. Discoveries &amp; Insights</h2>
+    <section>
+      <h2>3. Discoveries &amp; Insights</h2>
 
-  <!-- ===================== -->
-  <!-- RQ1: Long-run trends   -->
-  <!-- ===================== -->
-  <h3>Research Question 1: How have corporate ownership and owner-occupancy rates changed across Boston neighborhoods from 2004–2024?</h3>
-  <p>
-    I begin by examining neighborhood-level time series to evaluate whether corporate ownership growth is broad-based
-    across Boston or concentrated in specific neighborhoods, and whether owner-occupancy trends move inversely over time.
-  </p>
+      <!-- RQ1 -->
+      <h3>Research Question 1: How have corporate ownership and owner-occupancy rates changed across Boston neighborhoods from 2004–2024?</h3>
+      <p>
+        I first examine neighborhood trends to see whether corporate ownership growth is broad-based or concentrated in a subset of places. I also check whether
+        owner-occupancy moves inversely, as suggested by the “local control” framing in the Massachusetts report. These plots help identify candidate neighborhoods for deeper comparison.
+      </p>
 
-  <h4>Visualization 1-A: White Population (all neighborhoods)</h4>
-  <figure>
-    <img src="pset2figures/White Population CROP.png" alt="Map of neighborhoods with high White population (placeholder)" />
-    <figcaption>
-      <strong>Context map: predominantly White neighborhoods.</strong>
-      I first mapped neighborhoods with high White population to understand the spatial distribution of this group
-      and establish a baseline comparison for later demographic case studies.
-    </figcaption>
-  </figure>
+      <h4>Visualization 1-A: White population (context map)</h4>
+      <figure class="half">
+        <img src="pset2figures/White Population CROP.png" alt="Map of neighborhoods with high White population" />
+        <figcaption>
+          This map provides a baseline view of where White population counts are concentrated across Boston neighborhoods. I use it as context for interpreting ownership trends
+          in neighborhoods that differ in demographic composition. It also helps identify neighborhoods to compare against Roxbury and East Boston.
+        </figcaption>
+      </figure>
 
-  <h4>Visualization 1-B: Hispanic Population (selected neighborhoods)</h4>
-  <figure>
-    <img src="pset2figures/Hispanic Population CROP.png" alt="Map of neighborhoods with high Hispanic population (placeholder)" />
-    <figcaption>
-      <strong>Hispanic population is concentrated in East Boston and Dorchester.</strong>
-      This aligns with my expectations and provides a useful anchor for interpreting ownership patterns in neighborhoods
-      that function as cultural hubs for Boston’s Hispanic community.
-    </figcaption>
-  </figure>
+      <h4>Visualization 1-B: Hispanic population (context map)</h4>
+      <figure class="half">
+        <img src="pset2figures/Hispanic Population CROP.png" alt="Map of neighborhoods with high Hispanic population" />
+        <figcaption>
+          Hispanic population is concentrated most strongly in East Boston and parts of Dorchester. This supports using East Boston as a key case neighborhood because it functions
+          as a cultural hub and immigrant gateway area. It also helps frame later ownership trend comparisons as place-based, not purely statistical.
+        </figcaption>
+      </figure>
 
-  <h4>Visualization 1-C: Black Population (selected neighborhoods)</h4>
-  <figure>
-    <img src="pset2figures/Black Population CROP.png" alt="Map of neighborhoods with high Black population (placeholder)" />
-    <figcaption>
-      <strong>Black population is concentrated in Roxbury and Dorchester.</strong>
-      This map helps contextualize later comparisons by showing where Boston’s Black communities are geographically concentrated.
-    </figcaption>
-  </figure>
+      <h4>Visualization 1-C: Black population (context map)</h4>
+      <figure class="half">
+        <img src="pset2figures/Black Population CROP.png" alt="Map of neighborhoods with high Black population" />
+        <figcaption>
+          Black population is concentrated most strongly in Roxbury and parts of Dorchester. This supports using Roxbury as a focal neighborhood because it is a long-standing Black
+          cultural hub in Boston. It also motivates checking whether ownership restructuring intersects with historically Black communities.
+        </figcaption>
+      </figure>
 
-  <!-- ===================== -->
-  <!-- RQ2: Where change is concentrated -->
-  <!-- ===================== -->
-  <h3>Research Question 2: Which neighborhoods experienced the largest shifts between 2004 and 2024?</h3>
-  <p>
-    To identify where ownership restructuring is most concentrated, I compare the change in corporate ownership from
-    2004 to 2024 across neighborhoods and highlight the largest movers.
-  </p>
+      <!-- RQ2 -->
+      <h3>Research Question 2: Which neighborhoods experienced the largest shifts between 2004 and 2024?</h3>
+      <p>
+        To find where ownership restructuring is most concentrated, I compare the change in corporate ownership between 2004 and 2024. This highlights the “largest movers” and
+        helps separate citywide drift from neighborhood-specific surges. These patterns can guide where future eviction-filing analysis should focus.
+      </p>
 
-  <h4>Visualization 2-A: Largest changes from 2004 to 2024</h4>
-  <figure>
-    <img src="pset2figures/Population Comparison with Color.png" alt="Change in corporate ownership from 2004 to 2024 by neighborhood (placeholder)" />
-    <figcaption>
-      <strong>Corporate ownership growth is concentrated in a subset of neighborhoods.</strong>
-      Regionally, this view helped me connect demographic concentration with ownership change and consider whether
-      long-standing patterns of segregation may interact with redevelopment and investor activity.
-    </figcaption>
-  </figure>
+      <h4>Visualization 2-A: Largest changes from 2004 to 2024</h4>
+      <figure class="half">
+        <img src="pset2figures/Population Comparison with Color.png" alt="Change in corporate ownership from 2004 to 2024 by neighborhood" />
+        <figcaption>
+          Corporate ownership growth is concentrated in a subset of neighborhoods rather than evenly distributed. This view helped me connect ownership shifts to neighborhood type
+          (central redevelopment areas versus outer residential areas). It also raises a hypothesis that redevelopment intensity may be linked to investor expansion.
+        </figcaption>
+      </figure>
 
-  <!-- ===================== -->
-  <!-- RQ3: Demographics / equity -->
-  <!-- ===================== -->
-  <h3>Research Question 3: Are neighborhoods with higher shares of Black and Hispanic residents associated with higher corporate ownership or lower owner-occupancy?</h3>
-  <p>
-    To explore equity implications, I compare ownership measures to neighborhood racial/ethnic composition by computing
-    demographic shares (e.g., % Black = black_all / tot_pop_all; % Hispanic = hisp_all / tot_pop_all). Because the analysis
-    is at the neighborhood scale—and some demographic fields appear repeated across years—these results should be interpreted
-    as descriptive snapshots rather than evidence of demographic change over time.
-  </p>
+      <!-- RQ3 -->
+      <h3>Research Question 3: Are neighborhoods with higher shares of Black and Hispanic residents associated with higher corporate ownership or lower owner-occupancy?</h3>
+      <p>
+        I compare ownership trends for predominantly White, Black, and Hispanic neighborhoods to explore whether ownership restructuring overlaps with demographic concentration.
+        These comparisons are descriptive and neighborhood-scale, so they should not be interpreted as causal. The intent is to identify plausible equity-relevant patterns and case neighborhoods.
+      </p>
 
-  <h4>Visualization 3-A: Predominantly White neighborhoods (ownership trends)</h4>
-  <figure>
-    <img src="pset2figures/White Population Map Graph.png" alt="Ownership trends for predominantly White neighborhoods (placeholder)" />
-    <figcaption>
-      <strong>Outer neighborhoods remain more owner-occupied; central neighborhoods trend more corporate-owned.</strong>
-      In more outer, suburban-like neighborhoods, owner-occupancy stays relatively high, while more central areas show
-      stronger growth in corporate ownership over time.
-    </figcaption>
-  </figure>
+      <h4>Visualization 3-A: Predominantly White neighborhoods (ownership trends)</h4>
+      <figure class="half">
+        <img src="pset2figures/White Population Map Graph.png" alt="Ownership trends for predominantly White neighborhoods" />
+        <figcaption>
+          Outer neighborhoods tend to remain more owner-occupied across the time window, while central neighborhoods show faster growth in corporate ownership. This suggests that
+          location and development pressure may matter as much as demographics alone. It also provides a reference pattern to compare against Roxbury and East Boston.
+        </figcaption>
+      </figure>
 
-  <h4>Visualization 3-B: Predominantly Hispanic neighborhoods (ownership trends)</h4>
-  <figure>
-    <img src="pset2figures/Hispanic Population Map and Chart.png" alt="Ownership trends for predominantly Hispanic neighborhoods (placeholder)" />
-    <figcaption>
-      <strong>East Boston stands out as a Hispanic hub with rising corporate ownership.</strong>
-      Compared with more peripheral neighborhoods, East Boston shows stronger growth in corporate ownership, suggesting
-      that investor expansion may intersect with culturally significant neighborhoods in locally important ways.
-    </figcaption>
-  </figure>
+      <h4>Visualization 3-B: Predominantly Hispanic neighborhoods (ownership trends)</h4>
+      <figure class="half">
+        <img src="pset2figures/Hispanic Population Map and Chart.png" alt="Ownership trends for predominantly Hispanic neighborhoods" />
+        <figcaption>
+          East Boston stands out as a Hispanic hub with a notable rise in corporate ownership in recent years. This makes it a useful case for connecting neighborhood identity to
+          ownership change over time. It also aligns with the readings’ concern that instability can concentrate in specific communities.
+        </figcaption>
+      </figure>
 
-  <h4>Visualization 3-C: Predominantly Black neighborhoods (ownership trends)</h4>
-  <figure>
-    <img src="pset2figures/Black Population Map and Graph.png" alt="Ownership trends for predominantly Black neighborhoods (placeholder)" />
-    <figcaption>
-      <strong>Roxbury and Dorchester show rising corporate ownership over time.</strong>
-      Even though corporate ownership is not universally highest in the highest-% Black neighborhoods citywide, these
-      neighborhoods show meaningful increases over the 2004–2024 period.
-    </figcaption>
-  </figure>
+      <h4>Visualization 3-C: Predominantly Black neighborhoods (ownership trends)</h4>
+      <figure class="half">
+        <img src="pset2figures/Black Population Map and Graph.png" alt="Ownership trends for predominantly Black neighborhoods" />
+        <figcaption>
+          Roxbury and Dorchester show meaningful increases in corporate ownership across 2004–2024. Even if the highest-% Black neighborhoods are not universally the highest in corporate
+          ownership, these trends suggest investor expansion intersects with historically Black communities. This supports deeper follow-up using eviction filings if available.
+        </figcaption>
+      </figure>
 
-  <h4>Visualization 3-D: Population comparison maps (Black, White, Hispanic)</h4>
-  <figure>
-    <img src="pset2figures/Population Comparison.png" alt="Maps comparing neighborhood counts for Black, White, and Hispanic populations (placeholder)" />
-    <figcaption>
-      <strong>Population maps contextualize demographic comparisons spatially.</strong>
-      Mapping neighborhood counts for Black, White, and Hispanic populations helps interpret demographic comparisons by showing
-      where populations are concentrated geographically.
-    </figcaption>
-  </figure>
+      <h4>Visualization 3-D: Population comparison maps (Black, White, Hispanic)</h4>
+      <figure class="half">
+        <img src="pset2figures/Population Comparison.png" alt="Maps comparing neighborhood counts for Black, White, and Hispanic populations" />
+        <figcaption>
+          These maps place demographic comparisons in geographic context by showing where population counts cluster. They help explain why Roxbury and East Boston are treated as focal
+          neighborhoods, since both appear as clear hubs for their respective communities. This context prevents interpreting trends as “citywide uniform” when they are place-specific.
+        </figcaption>
+      </figure>
 
-  <!-- ===================== -->
-  <!-- RQ4: Housing stability proxy -->
-  <!-- ===================== -->
-  <h3>Research Question 4: Is higher corporate ownership associated with housing instability indicators?</h3>
-  <p>
-    Because the provided dataset includes housing-type categories (e.g., correctional, nursing, etc.), I explored whether these
-    categories show geographic clustering and whether they co-occur with higher corporate ownership in specific neighborhoods.
-  </p>
+      <!-- RQ4 -->
+      <h3>Research Question 4: Is higher corporate ownership associated with housing instability indicators?</h3>
+      <p>
+        Since this dataset does not include evictions, I explored whether housing-type categories and neighborhood context suggest stability differences. I check whether institutional
+        housing types cluster geographically and whether those clusters overlap with higher corporate ownership. This is a hypothesis-generating step rather than a definitive test.
+      </p>
 
-  <h4>Visualization 4-A: Housing Types (geographic distribution)</h4>
-  <figure>
-    <img src="pset2figures/Housing Types.png" alt="Housing types by neighborhood (placeholder)" />
-    <figcaption>
-      Housing types show geographic clustering across Boston. This view helps frame whether areas with specific housing
-      institutions (e.g., correctional facilities, nursing homes) overlap with investor ownership patterns.
-    </figcaption>
-  </figure>
+      <h4>Visualization 4-A: Housing types (geographic distribution)</h4>
+      <figure class="half">
+        <img src="pset2figures/Housing Types.png" alt="Housing types by neighborhood" />
+        <figcaption>
+          Housing types show clear geographic clustering across Boston. This helps frame whether institutional categories overlap with neighborhoods experiencing ownership restructuring.
+          It also suggests that housing context may shape who owns property in different areas.
+        </figcaption>
+      </figure>
 
-  <h4>Visualization 4-B: Housing Type and Ownership</h4>
-  <figure>
-    <img src="pset2figures/Housing Type and Ownership.png" alt="Ownership vs housing type by neighborhood (placeholder)" />
-    <figcaption>
-      This comparison suggests that some neighborhoods with concentrated institutional housing types also show higher
-      corporate ownership. This raises a follow-up question: how much of corporate ownership is driven by development type
-      and who is building or holding these properties?
-    </figcaption>
-  </figure>
-</section>
+      <h4>Visualization 4-B: Housing type and ownership</h4>
+      <figure class="half">
+        <img src="pset2figures/Housing Type and Ownership.png" alt="Ownership vs housing type by neighborhood" />
+        <figcaption>
+          Some neighborhoods with concentrated institutional housing types also show higher corporate ownership. This raises a follow-up question about mechanism: how much corporate
+          ownership reflects development type and who is building or holding those properties. Answering that would require parcel-level detail or additional ownership classification.
+        </figcaption>
+      </figure>
+    </section>
 
-<!-- ===================== -->
-<!-- 4) METHODS NOTES        -->
-<!-- ===================== -->
-<section class="methods">
-  <h2>4. Methods Notes (Data Transformations)</h2>
-  <ul>
-    <li><strong>Percent demographic shares:</strong> computed as group population / total population (e.g., black_all / tot_pop_all; hisp_all / tot_pop_all).</li>
-    <li><strong>Vacancy rate:</strong> computed as vacant_unit / tot_unit.</li>
-    <li><strong>Change metrics (2004→2024):</strong> computed as 2024 value − 2004 value for corporate ownership and owner-occupancy rates.</li>
-    <li><strong>Binning:</strong> some comparisons use terciles/quartiles of demographic shares to summarize differences across neighborhood groups.</li>
-  </ul>
-</section>
+    <!-- ===================== -->
+    <!-- 4) METHODS NOTES        -->
+    <!-- ===================== -->
+    <section class="methods">
+      <h2>4. Methods Notes (Data Transformations)</h2>
+      <ul>
+        <li><strong>Percent demographic shares:</strong> computed as group population / total population (e.g., black_all / tot_pop_all; hisp_all / tot_pop_all).</li>
+        <li><strong>Vacancy rate:</strong> computed as vacant_unit / tot_unit.</li>
+        <li><strong>Change metrics (2004→2024):</strong> computed as 2024 value − 2004 value for corporate ownership and owner-occupancy rates.</li>
+        <li><strong>Binning:</strong> some comparisons use terciles/quartiles of demographic shares to summarize differences across neighborhood groups.</li>
+      </ul>
+    </section>
 
-<!-- ===================== -->
-<!-- 5) SUMMARY              -->
-<!-- ===================== -->
-<section>
-  <h2>5. Summary</h2>
+    <!-- ===================== -->
+    <!-- 5) SUMMARY              -->
+    <!-- ===================== -->
+    <section>
+      <h2>5. Summary</h2>
 
-  <p>
-    From 2004 to 2024, Boston shows a broad shift toward higher corporate ownership alongside a gradual decline in owner-occupancy.
-    While most neighborhoods trend in the same direction, the pace differs substantially, suggesting investor expansion is uneven
-    across the city.
-  </p>
+      <p>
+        From 2004 to 2024, Boston shows a broad shift toward higher corporate ownership alongside a gradual decline in owner-occupancy. While most neighborhoods trend in the same
+        direction, the pace differs substantially, suggesting investor expansion is uneven across the city. This aligns with the readings’ emphasis that housing instability often concentrates
+        in particular places rather than spreading uniformly.
+      </p>
 
-  <figure class="half">
-    <img src="pset2figures/Neighborhood Corp Ownership.png"
-         alt="Citywide trends in corporate ownership and owner-occupancy, 2004–2024 (placeholder)" />
-    <figcaption>
-      Citywide averages show rising corporate ownership over time with a modest decline in owner-occupancy.
-    </figcaption>
-  </figure>
+      <figure class="half">
+        <img src="pset2figures/Neighborhood Corp Ownership.png" alt="Citywide trends in corporate ownership and owner-occupancy, 2004–2024" />
+        <figcaption>
+          Citywide averages show rising corporate ownership over time with a modest decline in owner-occupancy. The most visible acceleration begins in the late 2010s.
+          This motivates comparing neighborhoods that diverge from the average pattern.
+        </figcaption>
+      </figure>
 
-  <p>
-    Neighborhoods with the fastest increases tend to be shaped by redevelopment, centrality, or high rental demand
-    (e.g., Downtown, Fenway, South Boston Waterfront). In contrast, outer neighborhoods such as West Roxbury and Hyde Park
-    remain comparatively more owner-occupied and show slower growth in investor ownership.
-  </p>
+      <p>
+        Neighborhoods with the fastest increases tend to be shaped by redevelopment, centrality, or high rental demand (e.g., Downtown, Fenway, South Boston Waterfront). In contrast,
+        outer neighborhoods such as West Roxbury and Hyde Park remain comparatively more owner-occupied and show slower growth in corporate ownership. This suggests that location and market
+        pressure may be key drivers of ownership restructuring.
+      </p>
 
-  <p>
-    Adding demographic context complicates a simple equity narrative. At the neighborhood scale, corporate ownership is not uniformly
-    highest in neighborhoods with the largest shares of Black residents. However, historically Black communities such as
-    <strong>Roxbury</strong> and parts of <strong>Dorchester</strong> still show meaningful increases in corporate ownership over time.
-    Roxbury stands out as both a long-standing cultural hub of Boston’s Black community and a neighborhood where investor ownership
-    rises steadily across the time window.
-  </p>
+      <p>
+        Demographic context complicates a single equity conclusion. Corporate ownership is not uniformly highest in the neighborhoods with the largest shares of Black residents, but culturally
+        significant hubs such as Roxbury and parts of Dorchester still show meaningful increases over time. East Boston similarly stands out as a Hispanic hub with strong recent growth in corporate
+        ownership, motivating deeper place-based follow-up.
+      </p>
 
-  <figure class="half">
-    <img src="pset2figures/Roxbury.jpg" alt="Roxbury case figure (placeholder)" />
-    <figcaption>
-      Roxbury and Dorchester appear as key hubs for Boston’s Black population and show rising corporate ownership over time.
-    </figcaption>
-  </figure>
+      <figure class="half">
+        <img src="pset2figures/Roxbury.jpg" alt="Roxbury case figure (placeholder)" />
+        <figcaption>
+          Roxbury appears as a key Black population hub and shows rising corporate ownership over time. This supports the reading-based concern that housing instability can intersect with
+          long-standing communities. A next step would be comparing these patterns to eviction filings.
+        </figcaption>
+      </figure>
 
-  <p>
-    A parallel case emerges for <strong>East Boston</strong>, which functions as an immigrant gateway neighborhood and a major hub for
-    Boston’s Hispanic community. East Boston combines a high Hispanic share with strong growth in corporate ownership, suggesting that
-    investor expansion may intersect with culturally significant neighborhoods in locally important ways.
-  </p>
+      <figure class="half">
+        <img src="pset2figures/East boston.jpg" alt="East Boston case figure (placeholder)" />
+        <figcaption>
+          East Boston appears as a major Hispanic hub and shows visible growth in corporate ownership. This reinforces the value of combining statistical trends with neighborhood identity and
+          history. Future work should test whether ownership change correlates with eviction filing rates.
+        </figcaption>
+      </figure>
 
-  <figure class="half">
-    <img src="pset2figures/East boston.jpg" alt="East Boston case figure (placeholder)" />
-    <figcaption>
-      East Boston appears as a prominent Hispanic hub and shows visible growth in corporate ownership over time.
-    </figcaption>
-  </figure>
+      <p>
+        Overall, these results support the readings’ framing that ownership structure matters and that instability concentrates in specific neighborhoods (Badger &amp; Bui, 2018; Homes for All MA &amp; Huntley, 2022).
+        The main limitation is that I cannot measure eviction directly with this dataset. The clearest next step is to join tract-level ownership measures to eviction filings and test whether the
+        ownership–eviction relationship differs in neighborhoods such as Roxbury and East Boston.
+      </p>
 
-  <p>
-    Overall, these patterns motivate a next step: pairing tract-level corporate ownership with eviction filings (if available) to test whether
-    investor ownership is associated with eviction risk and whether that relationship differs for culturally significant neighborhoods such as
-    Roxbury and East Boston.
-  </p>
-</section>
+      <h3>References</h3>
+      <ul>
+        <li>Badger, E., &amp; Bui, Q. T. (2018, April 7). <em>In 83 million eviction records, a sweeping and intimate new look at housing in America</em>. The New York Times (The Upshot).</li>
+        <li>Homes for All Massachusetts &amp; Huntley, E. (2022). <em>Housing Justice Beyond the Emergency: An Analysis of Racial Inequity in Eviction Filings across MA</em>.</li>
+      </ul>
+    </section>
 
-	</main>
+  </main>
 
-	<footer>
-		<p>&copy; 2026 Rodrigo Gallardo</p>
-	</footer>
+  <footer>
+    <p>&copy; 2026 Rodrigo Gallardo</p>
+  </footer>
 </body>
 </html>
