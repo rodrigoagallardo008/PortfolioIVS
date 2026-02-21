@@ -297,35 +297,83 @@
     <!-- ===================== -->
     <!-- 5) SUMMARY              -->
     <!-- ===================== -->
-    <section>
-      <h2>5. Summary</h2>
+<section>
+  <h2>5. Summary</h2>
 
-      <p>
-        This exploratory analysis suggests that Boston has experienced a long-run shift toward investor-owned housing from 2004 to 2024.
-        Corporate ownership increases in nearly every neighborhood, but the magnitude of change is uneven and appears concentrated in
-        central and redevelopment-intensive areas. Owner-occupancy is comparatively flat or modestly declining, reinforcing a broader
-        restructuring of neighborhood housing markets.
-      </p>
+  <p>
+    Over the past two decades (2004–2024), Boston shows a broad shift toward higher corporate ownership alongside a gradual
+    decline in owner-occupancy. While this change appears across most neighborhoods, the pace differs substantially,
+    suggesting investor expansion is uneven rather than uniform.
+  </p>
 
-      <p>
-        Demographic comparisons at the neighborhood scale show that corporate ownership is not highest in the highest-% Black neighborhoods,
-        and the relationship with % Hispanic is weaker overall, with meaningful localized exceptions. This implies that ownership restructuring
-        does not map cleanly onto neighborhood racial composition at this aggregation level and may be shaped by spatial market dynamics such
-        as centrality, housing stock, and redevelopment.
-      </p>
+  <!-- Citywide trend figure holder -->
+  <figure class="half">
+    <img src="pset2figures/Neighborhood Corp Ownership.png"
+         alt="Citywide trends in corporate ownership and owner-occupancy, 2004–2024 (placeholder)" />
+    <figcaption>
+      Citywide averages indicate rising corporate ownership over time with a modest decline in owner-occupancy, motivating
+      neighborhood-level comparisons.
+    </figcaption>
+  </figure>
 
-      <p>
-        Finally, corporate ownership is associated with higher vacancy and lower owner-occupancy in 2024, which may reflect structural
-        signals consistent with housing churn. However, vacancy is not equivalent to eviction, and this dataset does not directly measure
-        eviction filings. A key next step would be to pair tract-level ownership patterns with eviction records to evaluate whether higher
-        corporate ownership predicts higher eviction rates within Boston.
-      </p>
+  <p>
+    The neighborhoods that change the fastest tend to be areas shaped by redevelopment, centrality, or high rental demand
+    (e.g., Downtown, Fenway, South Boston Waterfront), while more residential outer neighborhoods (e.g., West Roxbury, Hyde Park)
+    remain comparatively more owner-occupied and show slower growth in investor ownership.
+  </p>
 
-      <p class="note">
-        <strong>Limitations:</strong> corporate ownership is inferred from owner-name keyword matching; neighborhood aggregation can hide within-neighborhood
-        variation; and eviction filings are not included in the provided files.
-      </p>
-    </section>
+  <!-- “largest movers” / concentration figure holder -->
+  <figure class="half">
+    <img src="pset2figures/FIGURE_1C_delta_bar.png"
+         alt="Change in corporate ownership from 2004 to 2024 by neighborhood (placeholder)" />
+    <figcaption>
+      Corporate ownership growth is concentrated in a subset of neighborhoods, highlighting where ownership restructuring
+      is most intense.
+    </figcaption>
+  </figure>
+
+  <p>
+    When demographic composition is added, the equity story becomes more nuanced. At the neighborhood scale, corporate ownership
+    is not uniformly highest in neighborhoods with the largest shares of Black residents. However, historically Black communities
+    such as <strong>Roxbury</strong> and parts of <strong>Dorchester</strong> still show meaningful increases in corporate ownership over time,
+    even as owner-occupancy remains lower than in many outer neighborhoods. Roxbury stands out as both a long-standing cultural hub
+    of Boston’s Black community and a neighborhood where investor ownership rises steadily across the time window.
+  </p>
+
+  <!-- Roxbury / Black population case figure holder -->
+  <figure class="half">
+    <img src="pset2figures/Roxbury.jpg"
+         alt="Map and trend view highlighting predominantly Black neighborhoods (placeholder)" />
+    <figcaption>
+      Roxbury and Dorchester appear as key hubs for Boston’s Black population in the neighborhood-level data. The paired trend
+      view shows how corporate ownership rises over time in these communities relative to owner-occupancy.
+    </figcaption>
+  </figure>
+
+  <p>
+    A parallel pattern appears for <strong>East Boston</strong>, which functions as an immigrant gateway neighborhood and a major hub for
+    Boston’s Hispanic community. East Boston combines a high Hispanic share with rapid growth in corporate ownership in recent years.
+    Even if the citywide correlation between demographic share and corporate ownership is not strong, neighborhood case studies like East
+    Boston suggest investor expansion can still intersect with culturally significant communities in locally important ways.
+  </p>
+
+  <!-- East Boston / Hispanic population case figure holder -->
+  <figure class="half">
+    <img src="pset2figures/East boston.jpg"
+         alt="Map and trend view highlighting predominantly Hispanic neighborhoods (placeholder)" />
+    <figcaption>
+      East Boston appears as a prominent Hispanic hub and shows a visible increase in corporate ownership over time, making it a useful
+      case for thinking about neighborhood identity alongside ownership change.
+    </figcaption>
+  </figure>
+
+  <p>
+    Finally, housing “stability proxies” reinforce the contrast between neighborhood types. Neighborhoods with higher corporate ownership
+    tend to show higher vacancy, while neighborhoods with higher owner-occupancy tend to show lower vacancy. Vacancy is not the same as eviction,
+    but it can flag places where housing turnover or speculative holding may be more common.
+  </p>
+
+</section>
 
 	</main>
 
