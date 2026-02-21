@@ -140,6 +140,35 @@
       </p>
 
       <h4>Visualization 1-a: Neighborhood trends over time (all neighborhoods)</h4>
+
+      <!-- SHOWING DATA IS REPETITIVE   -->
+
+<figure style="max-width:320px; margin:1rem 0;">
+  <svg viewBox="0 0 260 80" style="width:100%; height:auto; border:1px solid #ddd; border-radius:6px;">
+    
+    <!-- x-axis -->
+    <line x1="30" y1="60" x2="240" y2="60" stroke="#333" stroke-width="1"/>
+
+    <!-- black_all (flat line) -->
+    <line x1="30" y1="25" x2="240" y2="25" stroke="#111" stroke-width="2"/>
+
+    <!-- hisp_0_17 (flat dashed line) -->
+    <line x1="30" y1="45" x2="240" y2="45" stroke="#111" stroke-width="2" stroke-dasharray="4 3"/>
+
+    <!-- labels -->
+    <text x="30" y="72" font-size="9">2004</text>
+    <text x="210" y="72" font-size="9">2023</text>
+
+    <text x="10" y="28" font-size="9">black_all</text>
+    <text x="10" y="48" font-size="9">hisp_0_17</text>
+  </svg>
+
+  <figcaption style="font-size:0.9em; margin-top:0.4rem;">
+    Both <em>black_all</em> and <em>hisp_0_17</em> remain constant across all years in the file,
+    indicating these fields are repeated values rather than true year-to-year demographic change.
+  </figcaption>
+</figure>
+
       <figure>
         <img src="pset2figures/White Population.png" alt="Ownership trends over time across all neighborhoods" />
         <figcaption>
