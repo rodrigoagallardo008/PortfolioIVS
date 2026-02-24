@@ -9,7 +9,7 @@
    =========================== */
 
 :root{
-  --accent: oklch(65% 50% 0);
+  --accent: oklch(45.457% 0.31135 265.276);
   --bg: #f9f9f9;
   --text: #333;
   --card: #ffffff;
@@ -18,8 +18,8 @@
   --current: oklch(70% 20% 50);
 
   /* button */
-  --btn: #ff69b4;
-  --btn-hover: #ff4786;
+  --btn: #698aff;
+  --btn-hover: #4a47ff97;
 }
 
 html{
