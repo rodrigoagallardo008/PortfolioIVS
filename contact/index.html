@@ -4,38 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
+
+    <!-- Link to same stylesheet -->
+    <link rel="stylesheet" href="../style.css" />
 </head>
 
 <body>
 
-    <nav>
-        <a href="../index.html">Home</a>
-        <a href="../contact/index.html">Contact</a>
-        <a href="../about/index.html">About</a>
-    </nav>
+<nav>
+    <a href="../index.html">Home</a>
+    <a href="../projects/index.html">Projects</a>
+    <a class="current" href="index.html">Contact</a>
+    <a href="../about/index.html">About</a>
+</nav>
 
-    <h1>Contact Information</h1>
+<h1>Contact Information</h1>
 
-    <form action="mailto:ragallar@mit.edu" method="GET">
+<form action="mailto:ragallar@mit.edu" method="GET">
 
-        <label>
-            Email:
-            <input name="email" type="email">
-        </label>
+    <label>
+        Email:
+        <input name="email" type="email">
+    </label>
 
-        <label>
-            Subject:
-            <input name="subject">
-        </label>
+    <label>
+        Subject:
+        <input name="subject">
+    </label>
 
-        <label>
-            Message:
-            <textarea name="body"></textarea>
-        </label>
+    <label>
+        Message:
+        <textarea name="body"></textarea>
+    </label>
 
-        <button>Send</button>
+    <button type="submit">Send</button>
 
-    </form>
+</form>
 
 </body>
 </html>
