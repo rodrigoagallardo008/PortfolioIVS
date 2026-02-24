@@ -1,28 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="home">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rodrigo: Personal Site and portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <link rel="stylesheet" href="../style.css">
+  <script type="module" src="../global.js"></script>
 </head>
+
 <body>
-    
-    <h1>Rodrigo's Personal Site and Portfolio</h1>
-    <p>Welcome to my personal website and portfolio!</p>
 
-<nav>   
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../projects/index.html">Projects</a>
+    <a href="../contact/index.html">Contact</a>
+    <a href="../about/index.html">About</a>
+  </nav>
 
-    <a href="index.html">Home</a>
-    <a href="projects/index.html">Projects</a>
-    
-    <a href="contact/index.html">Contact</a>
-    <a href="about/index.html">About</a>
-    
-</nav>
+  <h1>Contact</h1>
+
+  <div class="home-header">
+    <p>
+      Feel free to reach out regarding research collaborations, design projects,
+      computational work, or anything in between. I’m always happy to connect.
+    </p>
+
+    <!-- Optional image -->
+    <!-- <img src="../images/contact.png" alt="Contact illustration"> -->
+  </div>
+
+  <section class="contact-form">
+    <form action="mailto:ragallar@mit.edu" method="GET">
+
+      <label>
+        Your Email
+        <input name="email" type="email" required>
+      </label>
+
+      <label>
+        Subject
+        <input name="subject" required>
+      </label>
+
+      <label>
+        Message
+        <textarea name="body" rows="6" required></textarea>
+      </label>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+  </section>
 
 </body>
-
-
-
 </html>
