@@ -1,378 +1,262 @@
-/* ------------------------------------------------------
-   1. Global Color Variables
------------------------------------------------------- */
-:root {
-  --color-accent: oklch(65% 50% 0);
-  --border-gray: oklch(80% 3% 200);
-  --current-page-color: oklch(70% 20% 50);
+/* ===========================
+   Rodrigo — PortfolioIVS Theme
+   Similar vibe to Diana’s CSS:
+   - clean centered layout
+   - nav with current + hover underline
+   - home header text + hero image
+   - contact form card w/ 2-col labels
+   - light + dark mode support
+   =========================== */
+
+:root{
+  --accent: oklch(65% 50% 0);
+  --bg: #f9f9f9;
+  --text: #333;
+  --card: #ffffff;
+  --border: oklch(80% 3% 200);
+  --nav-border: oklch(50% 10% 200 / 40%);
+  --current: oklch(70% 20% 50);
+
+  /* button */
+  --btn: #ff69b4;
+  --btn-hover: #ff4786;
 }
 
-/* ------------------------------------------------------
-   2. Base and Global Styles
------------------------------------------------------- */
-html {
-  /* Let form elements, checkboxes, etc. use the accent color */
-  accent-color: var(--color-accent);
-  /* Supports both light & dark modes for user preference */
+html{
+  accent-color: var(--accent);
   color-scheme: light dark;
 }
 
-body {
-  /* Keep a comfortable base font size (~18px) and line-height 1.5 */
+body{
   font: 112.5%/1.5 system-ui;
-  /* Use clamp() so the body can grow with the screen size:
-     - Minimum width: 80ch (don’t shrink below 80 characters wide)
-     - Ideal scenario: 90vw (90% of the viewport width)
-     - Maximum width: 120ch (don’t exceed ~120 characters wide)
-  */
-  max-width: clamp(80ch, 90vw, 120ch);
-  /* Center the content horizontally, and add padding so text doesn’t hug edges on smaller screens */
+  max-width: clamp(70ch, 92vw, 110ch);
   margin: 0 auto;
   padding: 1em;
-  background-color: #f9f9f9;
-  color: #333;
+  background: var(--bg);
+  color: var(--text);
 }
 
-/* Make images responsive */
-img {
+img{
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
-/* Give headings a tighter line-height; keep them distinct in size */
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.1;
-}
+h1,h2,h3,h4,h5,h6{ line-height: 1.1; }
+h1{ font-size: 2rem; margin: 0.5em 0 0.75em; }
+h2{ font-size: 1.4rem; margin: 0.75em 0 0.5em; }
 
-h1 {
-  font-size: 2rem;
-  margin: 0.5em 0;
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin: 0.5em 0;
-}
-
-/* ------------------------------------------------------
-   3. Navigation
------------------------------------------------------- */
-nav {
+/* ---------------------------
+   Navigation
+--------------------------- */
+nav{
   display: flex;
-  justify-content: space-around;
+  gap: 0.25rem;
   align-items: center;
-  padding: 1em 0;
-  margin-bottom: 1em;
-  background-color: #ffffff;
-  --border-color: oklch(50% 10% 200 / 40%);
-  border-bottom: 1px solid var(--border-color);
+  justify-content: space-between;
+  padding: 0.75em 0;
+  margin-bottom: 1.25em;
+  background: var(--card);
+  border-bottom: 1px solid var(--nav-border);
 }
 
-nav a {
+nav a{
   flex: 1;
+  text-align: center;
   text-decoration: none;
   color: inherit;
+  padding: 0.6em 0.5em;
+  border-bottom: 0.35em solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  border-radius: 0.5em 0.5em 0 0;
+}
+
+nav a:hover{
+  border-bottom-color: var(--accent);
+  background-color: color-mix(in oklch, var(--accent), canvas 88%);
+}
+
+nav a.current{
+  color: var(--current);
+  border-bottom-color: var(--nav-border);
+  font-weight: 700;
+}
+
+/* ---------------------------
+   Home header (intro + hero)
+--------------------------- */
+.home-header{
+  width: 100%;
+  max-width: 100ch;
+  margin: 0 auto 1.75em;
   text-align: center;
-  padding: 0.5em;
-  transition: all 0.3s ease-in-out;
 }
 
-nav a.current {
-  color: var(--current-page-color);
-  border-bottom: 0.4em solid var(--border-color);
-  padding-bottom: 0.3em;
-  font-weight: bold;
+.home-header p{
+  font-size: 1.15rem;
+  margin: 0 auto 1em;
+  max-width: 70ch;
 }
 
-nav a:hover {
-  border-bottom: 0.4em solid var(--color-accent);
-  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+.home-header img{
+  width: 100%;
+  border-radius: 0.75em;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
 }
 
-/* ------------------------------------------------------
-   4. Contact Page
------------------------------------------------------- */
-.contact-form {
-  max-width: 40rem;
-  margin: auto;
+/* ---------------------------
+   Card utility (optional)
+--------------------------- */
+.card{
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 0.75em;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* ---------------------------
+   Contact form
+--------------------------- */
+.contact-form{
+  max-width: 42rem;
+  margin: 0 auto;
   padding: 2em;
-  background-color: #ffffff;
-  border-radius: 0.5em;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: var(--card);
+  border-radius: 0.75em;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+  border: 1px solid rgba(0,0,0,0.08);
 }
 
-.contact-form input,
-.contact-form textarea,
-.contact-form button {
-  font: inherit;
-}
-
-.contact-form form {
+.contact-form form{
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 1em;
   align-items: center;
 }
 
-.contact-form form label {
+.contact-form label{
   text-align: right;
   padding-right: 0.5em;
-  font-weight: bold;
+  font-weight: 650;
 }
 
-.contact-form form input,
-.contact-form form textarea {
+.contact-form input,
+.contact-form textarea,
+.contact-form button{
+  font: inherit;
+}
+
+.contact-form input,
+.contact-form textarea{
   width: 100%;
   box-sizing: border-box;
   padding: 0.8em;
-  border: 1px solid var(--border-gray);
-  border-radius: 0.5em;
+  border: 1px solid var(--border);
+  border-radius: 0.6em;
+  background: color-mix(in oklch, canvas, white 65%);
 }
 
-.contact-form form input[type="email"],
-.contact-form form input[type="text"] {
-  height: 2.5rem;
+.contact-form input[type="email"],
+.contact-form input[type="text"]{
+  height: 2.6rem;
 }
 
-.contact-form form textarea {
-  height: 5rem;
+.contact-form textarea{
+  min-height: 7rem;
+  resize: vertical;
 }
 
-.contact-form form button {
+.contact-form button{
   grid-column: 1 / -1;
   width: 100%;
-  padding: 1em;
-  background-color: #ff69b4;
-  color: white;
+  padding: 0.95em 1em;
   border: none;
-  border-radius: 0.5em;
+  border-radius: 0.65em;
+  background: var(--btn);
+  color: white;
+  font-weight: 750;
+  font-size: 1.05em;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 1.1em;
-  transition: background-color 0.3s ease-in-out;
+  transition: opacity 0.2s ease, transform 0.05s ease;
 }
 
-.contact-form form button:hover {
-  background-color: #ff4786;
-}
+.contact-form button:hover{ background: var(--btn-hover); }
+.contact-form button:active{ transform: translateY(1px); }
 
-/* ------------------------------------------------------
-   5. Projects Page (Responsive Grid)
------------------------------------------------------- */
-.projects {
+/* ---------------------------
+   Projects grid (optional)
+--------------------------- */
+.projects{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-  gap: 1.5em;
-  padding: 2em;
-  margin: auto;
+  gap: 1.25em;
+  padding: 1.25em 0;
 }
 
-.projects article {
-  display: grid;
-  background-color: #ffffff;
-  border-radius: 0.8em;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  border: 1px solid rgba(0,0,0,0.1);
+.projects article{
+  background: var(--card);
+  border-radius: 0.85em;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.08);
   text-align: center;
-  padding: 1.5em;
-  transition: transform 0.3s ease-in-out;
+  padding: 1.25em;
+  transition: transform 0.2s ease;
 }
 
-.projects article:hover {
-  transform: scale(1.03);
-}
+.projects article:hover{ transform: scale(1.02); }
 
-.projects h2 {
-  margin: 0;
-  margin-bottom: 0.5em;
+.projects h2{
+  margin: 0 0 0.5em;
   font-size: 1.2rem;
 }
 
-.projects p {
+.projects p{
   margin: 0;
   line-height: 1.4;
-  font-size: 1em;
 }
 
-/* ------------------------------------------------------
-   6. Resume Page
------------------------------------------------------- */
-.resume {
-  max-width: 50rem;
-  margin: auto;
-  padding: 2em;
-  background-color: #ffffff;
-  border-radius: 0.5em;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
+/* ---------------------------
+   Dark mode (auto)
+--------------------------- */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #121212;
+    --text: #f2f2f2;
+    --card: #1e1e1e;
+    --border: rgba(255,255,255,0.18);
+    --nav-border: rgba(255,255,255,0.18);
+  }
+
+  nav a:hover{
+    background-color: color-mix(in oklch, var(--accent), black 78%);
+  }
+
+  .contact-form,
+  .projects article{
+    border-color: rgba(255,255,255,0.16);
+  }
 }
 
-.resume > h1 {
-  color: #ff69b4;
-  font-size: 1.8em;
-  margin-bottom: 0.2em;
-}
+/* ---------------------------
+   Mobile: switch contact form to 1-col
+--------------------------- */
+@media (max-width: 700px){
+  body{ max-width: 92vw; }
 
-.resume > p > strong {
-  color: #ff69b4;
-}
+  nav{
+    gap: 0.5rem;
+  }
 
-.resume .intro {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-top: 0.2em;
-}
+  nav a{
+    padding: 0.55em 0.25em;
+  }
 
-.resume-section {
-  background-color: #f9f9f9;
-  padding: 1.5em;
-  border-radius: 0.8em;
-  margin-bottom: 1.5em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.1);
-  text-align: left;
-}
+  .contact-form form{
+    grid-template-columns: 1fr;
+  }
 
-.resume-section h2 {
-  margin: 0;
-  color: var(--color-accent);
-}
-
-.resume-content {
-  margin-top: 0.5em;
-  color: #333;
-  line-height: 1.5;
-}
-
-.resume ul {
-  padding-left: 1.5em;
-}
-
-/* ------------------------------------------------------
-   7. Download Resume Button
------------------------------------------------------- */
-.download-resume {
-  text-align: center;
-  margin-top: 2em;
-  padding: 2em 0;
-}
-
-.download-resume a {
-  display: inline-block;
-  padding: 1em 2em;
-  background-color: #ff69b4;
-  color: white;
-  border-radius: 0.5em;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1em;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.download-resume a:hover {
-  background-color: #ff4786;
-}
-
-/* ------------------------------------------------------
-   8. Home Page Header Styling
------------------------------------------------------- */
-.home-header {
-  width: 100%;
-  max-width: 100ch;
-  margin: 0 auto 2em auto;
-  text-align: center;
-}
-
-.home-header p {
-  font-size: 1.25rem;
-  margin-bottom: 1em;
-}
-
-.home-header img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* ------------------------------------------------------
-   9. Dark Mode Switcher Styling
------------------------------------------------------- */
-.color-scheme {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  display: inline-flex;
-  gap: 4px;
-  font-size: 80%;
-}
-
-/* ------------------------------------------------------
-   10. Dark Mode Overrides
------------------------------------------------------- */
-html.dark-mode body {
-  background-color: #121212;
-  color: #f9f9f9;
-}
-
-html.dark-mode nav {
-  background-color: #1e1e1e;
-}
-
-html.dark-mode nav a {
-  color: #f9f9f9;
-}
-
-html.dark-mode nav a.current {
-  color: #f9f9f9;
-}
-
-html.dark-mode .contact-form,
-html.dark-mode .projects article,
-html.dark-mode .resume-section {
-  background-color: #1e1e1e;
-  color: #f9f9f9;
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-html.dark-mode .resume .intro,
-html.dark-mode .resume-content,
-html-dark-mode .resume p,
-html-dark-mode .resume ul,
-html-dark-mode .resume li {
-  color: #f9f9f9;
-}
-
-html.dark-mode .resume > h1,
-html.dark-mode .resume > p > strong {
-  color: #ff69b4 !important;
-}
-
-html.light-mode body {
-  background-color: #f9f9f9;
-  color: #333;
-}
-
-/* ------------------------------------------------------
-   11. Constrain Figures and Images within Main Content
------------------------------------------------------- */
-main section figure {
-  max-width: 700px !important;
-  width: 100% !important;
-  margin: 2em auto !important;
-  overflow: hidden !important;
-  box-sizing: border-box !important;
-}
-
-main section figure img {
-  display: block !important;
-  width: 100% !important;
-  max-width: 700px !important;
-  height: auto !important;
-  object-fit: contain !important;
-  margin: 0 auto !important;
+  .contact-form label{
+    text-align: left;
+    padding-right: 0;
+  }
 }

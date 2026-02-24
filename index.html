@@ -1,46 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" class="home">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact</title>
 
-  <!-- Use the same CSS + JS pattern -->
-  <link rel="stylesheet" href="../style.css" />
-  <script type="module" src="../global.js"></script>
+  <!-- IMPORTANT:
+    Replace PATH_TO_STYLE with your real path, e.g.
+    /PortfolioIVS/style.css   (GitHub Pages project site)
+    OR ../style.css           (if this file is in /contact/)
+  -->
+  <link rel="stylesheet" href="PATH_TO_STYLE/style.css" />
 </head>
 
 <body>
 
   <nav>
-    <a href="../index.html">Home</a>
-    <a href="../projects/index.html">Projects</a>
-    <a class="current" href="../contact/index.html">Contact</a>
-    <a href="../about/index.html">About</a>
+    <!-- Replace PATH_TO_* with your real links -->
+    <a href="PATH_TO_HOME/index.html">Home</a>
+    <a href="PATH_TO_PROJECTS/projects/index.html">Projects</a>
+    <a class="current" href="PATH_TO_CONTACT/contact/index.html">Contact</a>
+    <a href="PATH_TO_ABOUT/about/index.html">About</a>
   </nav>
 
   <h1>Contact Information</h1>
 
-  <!-- This matches her .home-header section styling -->
   <div class="home-header">
     <p>
-      Feel free to reach out for collaboration, research, or project inquiries.
+      Feel free to reach out for collaborations, research, or project inquiries.
       Email is usually the best way to contact me.
     </p>
 
-    <!-- Optional image (keeps the same vibe as her home page) -->
-    <!-- Replace with your own image path if you want -->
-    <img src="../images/diana_1.png" alt="Contact header image">
+    <!-- Placeholder image path -->
+    <img src="PATH_TO_IMAGES/placeholder-contact-hero.png" alt="Contact hero image">
   </div>
 
-  <!-- IMPORTANT: her CSS styles .contact-form (the container) + .contact-form form (the grid) -->
   <section class="contact-form">
-    <form action="mailto:ragallar@mit.edu" method="GET">
-      <label for="email">Email:</label>
+    <form action="mailto:YOUR_EMAIL@domain.com" method="GET">
+      <label for="email">Your Email:</label>
       <input id="email" name="email" type="email" required>
 
       <label for="subject">Subject:</label>
-      <!-- Use type="text" to match her CSS input[type="text"] rule -->
       <input id="subject" name="subject" type="text" required>
 
       <label for="body">Message:</label>
