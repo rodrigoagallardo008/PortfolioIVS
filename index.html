@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="home">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact</title>
-  <link rel="stylesheet" href="../style.css">
+
+  <!-- Use the same CSS + JS pattern -->
+  <link rel="stylesheet" href="../style.css" />
   <script type="module" src="../global.js"></script>
 </head>
 
@@ -13,42 +15,38 @@
   <nav>
     <a href="../index.html">Home</a>
     <a href="../projects/index.html">Projects</a>
-    <a href="../contact/index.html">Contact</a>
+    <a class="current" href="../contact/index.html">Contact</a>
     <a href="../about/index.html">About</a>
   </nav>
 
-  <h1>Contact</h1>
+  <h1>Contact Information</h1>
 
+  <!-- This matches her .home-header section styling -->
   <div class="home-header">
     <p>
-      Feel free to reach out regarding research collaborations, design projects,
-      computational work, or anything in between. I’m always happy to connect.
+      Feel free to reach out for collaboration, research, or project inquiries.
+      Email is usually the best way to contact me.
     </p>
 
-    <!-- Optional image -->
-    <!-- <img src="../images/contact.png" alt="Contact illustration"> -->
+    <!-- Optional image (keeps the same vibe as her home page) -->
+    <!-- Replace with your own image path if you want -->
+    <img src="../images/diana_1.png" alt="Contact header image">
   </div>
 
+  <!-- IMPORTANT: her CSS styles .contact-form (the container) + .contact-form form (the grid) -->
   <section class="contact-form">
     <form action="mailto:ragallar@mit.edu" method="GET">
+      <label for="email">Email:</label>
+      <input id="email" name="email" type="email" required>
 
-      <label>
-        Your Email
-        <input name="email" type="email" required>
-      </label>
+      <label for="subject">Subject:</label>
+      <!-- Use type="text" to match her CSS input[type="text"] rule -->
+      <input id="subject" name="subject" type="text" required>
 
-      <label>
-        Subject
-        <input name="subject" required>
-      </label>
+      <label for="body">Message:</label>
+      <textarea id="body" name="body" required></textarea>
 
-      <label>
-        Message
-        <textarea name="body" rows="6" required></textarea>
-      </label>
-
-      <button type="submit">Send Message</button>
-
+      <button type="submit">Send</button>
     </form>
   </section>
 
