@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Vis & Society Assignment 3</title>
+  <link rel="stylesheet" href="https://vis-society.github.io/assignments/report.css" />
+
+  <style>
+    figure img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Smaller centered figures (use class="half") */
+    figure.half {
+      max-width: 50%;
+      margin: 1rem auto;
+    }
+
+    figure.half img {
+      width: 100%;
+    }
+
+    /* Even smaller (optional) */
+    figure.third {
+      max-width: 38%;
+      margin: 1rem auto;
+    }
+
+    figure.third img {
+      width: 100%;
+    }
+
+    figure figcaption {
+      font-weight: normal; /* guard against accidental bold */
+    }
+
+    /* Small helper styles */
+    .note {
+      padding: 0.75rem 1rem;
+      border-left: 4px solid #999;
+      background: #f7f7f7;
+    }
+
+    .tight li { margin-bottom: 0.35rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    /* Optional: 2-column grid on wider screens */
+    @media (min-width: 900px) {
+      .grid.two {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>
+      <small>Assignment 3</small>
+      Visualization Critique &amp; Redesign — COVID-19 Spiral Chart
+    </h1>
+
+    <p>
+      <strong>Rodrigo Gallardo</strong> — <em>ragallar@mit.edu</em>
+    </p>
+  </header>
+
+  <main>
+    <!-- ===================== -->
+    <!-- 0) CONTEXT / OVERVIEW  -->
+    <!-- ===================== -->
+    <section>
+      <h2>0. Assignment Overview</h2>
+      <p>
+        This report critiques a well-known COVID-19 visualization (the NYT “spiral” chart published during Omicron) and
+        develops redesigned alternatives through sketches and a final, polished visualization. The goal is to justify the
+        contribution of every design element and clearly communicate a takeaway message for a general audience.
+      </p>
+
+      <p class="note">
+        <strong>Dataset:</strong> <code>COVID_US_cases.csv</code> (Google Covid-19 Open Data).<br />
+        <strong>Submission:</strong> single HTML page with critique, sketches, final chart, and write-ups.
+      </p>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 1) ORIGINAL VIS + READ -->
+    <!-- ===================== -->
+    <section>
+      <h2>1. The Original Visualization</h2>
+
+      <p>
+        Below is the original “spiral chart” shown in the New York Times opinion article. I first “read” the chart to
+        extract patterns that are visible without critique, then critique the design choices and redesign it.
+      </p>
+
+      <figure>
+        <img src="a3figures/original_spiral.png" alt="Original COVID-19 spiral chart from NYT opinion article" />
+        <figcaption>
+          The original visualization used in the NYT opinion piece during the Omicron wave. (Replace this image with your exported
+          screenshot or saved copy; keep it in the same directory structure as your HTML.)
+        </figcaption>
+      </figure>
+
+      <h3>1A. Insights I can read from the original</h3>
+      <ul class="tight">
+        <li><strong>Insight 1:</strong> <!-- e.g., “Cases rise sharply during Omicron compared to prior waves.” --></li>
+        <li><strong>Insight 2:</strong> <!-- e.g., “Seasonal pattern: winter peaks appear larger than summer peaks.” --></li>
+        <li><strong>Insight 3:</strong> <!-- e.g., “Wave-to-wave amplitude grows over time; later waves exceed earlier ones.” --></li>
+      </ul>
+
+      <p class="note">
+        Tip: keep these as concrete and visual (peaks/troughs, timing, relative magnitude), not interpretive claims.
+      </p>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 2) CRITIQUE            -->
+    <!-- ===================== -->
+    <section>
+      <h2>2. Critique (1–2 paragraphs)</h2>
+
+      <p>
+        <!-- PARAGRAPH 1: What works well -->
+        <!-- Example structure:
+             - what it tries to communicate
+             - what encodings help
+             - what stands out / emotional impact / audience fit
+        -->
+        [Write your first paragraph here: what the spiral does well and why.]
+      </p>
+
+      <p>
+        <!-- PARAGRAPH 2: What could improve + actionable directions -->
+        <!-- Focus on actionable critiques: readability, comparison, labels, start point,
+             hidden data, color meaning, scale interpretation, audience assumptions -->
+        [Write your second paragraph here: what could be improved and how.]
+      </p>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 3) SKETCHES            -->
+    <!-- ===================== -->
+    <section>
+      <h2>3. Sketches (3) + Rationale</h2>
+
+      <p>
+        I sketched three distinct redesign directions to explore alternatives to the spiral form, test different encodings,
+        and address the issues surfaced in the critique. Each sketch includes a brief rationale and what I would iterate next.
+      </p>
+
+      <!-- Option A: stacked vertically -->
+      <h3>Sketch 1</h3>
+      <figure class="half">
+        <img src="a3figures/sketch1.jpg" alt="Sketch 1 redesign" />
+        <figcaption>
+          Sketch 1 (hand-drawn). <!-- 1 sentence describing the design idea -->
+        </figcaption>
+      </figure>
+
+      <ul class="tight">
+        <li><strong>Motivation:</strong> <!-- why this form --> </li>
+        <li><strong>Key design choices:</strong> <!-- encoding choices, labeling, annotation --> </li>
+        <li><strong>What worked:</strong> <!-- what improved --> </li>
+        <li><strong>What didn’t:</strong> <!-- remaining issues --> </li>
+        <li><strong>Next iteration:</strong> <!-- what you'd change next --> </li>
+      </ul>
+
+      <h3>Sketch 2</h3>
+      <figure class="half">
+        <img src="a3figures/sketch2.jpg" alt="Sketch 2 redesign" />
+        <figcaption>
+          Sketch 2 (hand-drawn). <!-- 1 sentence describing the design idea -->
+        </figcaption>
+      </figure>
+
+      <ul class="tight">
+        <li><strong>Motivation:</strong></li>
+        <li><strong>Key design choices:</strong></li>
+        <li><strong>What worked:</strong></li>
+        <li><strong>What didn’t:</strong></li>
+        <li><strong>Next iteration:</strong></li>
+      </ul>
+
+      <h3>Sketch 3</h3>
+      <figure class="half">
+        <img src="a3figures/sketch3.jpg" alt="Sketch 3 redesign" />
+        <figcaption>
+          Sketch 3 (hand-drawn). <!-- 1 sentence describing the design idea -->
+        </figcaption>
+      </figure>
+
+      <ul class="tight">
+        <li><strong>Motivation:</strong></li>
+        <li><strong>Key design choices:</strong></li>
+        <li><strong>What worked:</strong></li>
+        <li><strong>What didn’t:</strong></li>
+        <li><strong>Next iteration:</strong></li>
+      </ul>
+
+      <!-- Optional: show sketches side-by-side on desktop -->
+      <!--
+      <div class="grid two">
+        <figure>
+          <img src="a3figures/sketch1.jpg" alt="Sketch 1 redesign" />
+          <figcaption>Sketch 1</figcaption>
+        </figure>
+        <figure>
+          <img src="a3figures/sketch2.jpg" alt="Sketch 2 redesign" />
+          <figcaption>Sketch 2</figcaption>
+        </figure>
+      </div>
+      <figure class="half">
+        <img src="a3figures/sketch3.jpg" alt="Sketch 3 redesign" />
+        <figcaption>Sketch 3</figcaption>
+      </figure>
+      -->
+    </section>
+
+    <!-- ===================== -->
+    <!-- 4) FINAL DESIGN        -->
+    <!-- ===================== -->
+    <section>
+      <h2>4. Final Visualization</h2>
+
+      <p>
+        The final chart below is my best attempt to communicate a clear takeaway message for a general audience. It builds on the
+        sketch exploration by emphasizing comparability over time, legibility, and clear annotation of key waves.
+      </p>
+
+      <figure>
+        <img src="a3figures/final_design.png" alt="Final redesigned COVID-19 visualization" />
+        <figcaption>
+          Final redesign. Include a descriptive title inside the chart itself, plus axis labels / legend. This caption can be 2–4 sentences
+          explaining what to look at first and what the key takeaway is.
+        </figcaption>
+      </figure>
+
+      <h3>4A. Final write-up (2 paragraphs)</h3>
+
+      <p>
+        <!-- Paragraph 1: Rationale / message -->
+        [Paragraph 1: What message you’re trying to convey and why this design best supports it.]
+      </p>
+
+      <p>
+        <!-- Paragraph 2: Encodings + reflection vs critique -->
+        [Paragraph 2: What encodings/transforms you used and why; what tradeoffs remain; how this addresses your critique.]
+      </p>
+
+      <h3>4B. Data transformations / methods (optional but helpful)</h3>
+      <ul class="tight">
+        <li><strong>Transform(s):</strong> <!-- e.g., 7-day rolling average, log scale, per-capita normalization --> </li>
+        <li><strong>Filtering:</strong> <!-- e.g., date range, excluding early missing values --> </li>
+        <li><strong>Annotation strategy:</strong> <!-- how you chose labels --> </li>
+        <li><strong>Tooling:</strong> <!-- Tableau / Datawrapper / Illustrator / etc. --> </li>
+      </ul>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 5) REFERENCES (OPTIONAL) -->
+    <!-- ===================== -->
+    <section>
+      <h2>5. References</h2>
+      <ul class="tight">
+        <li><!-- NYT opinion piece citation (if you include it) --></li>
+        <li><!-- Dataset citation: Google Covid-19 Open Data --></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rodrigo Gallardo</p>
+  </footer>
+</body>
+</html>
