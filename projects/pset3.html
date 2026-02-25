@@ -112,9 +112,9 @@
 
       <h3>1A. Insights I can read from the original</h3>
       <ul class="tight">
-        <li><strong>Insight 1:</strong> <!-- e.g., “Cases rise sharply during Omicron compared to prior waves.” --></li>
-        <li><strong>Insight 2:</strong> <!-- e.g., “Seasonal pattern: winter peaks appear larger than summer peaks.” --></li>
-        <li><strong>Insight 3:</strong> <!-- e.g., “Wave-to-wave amplitude grows over time; later waves exceed earlier ones.” --></li>
+        <li><strong>Insight 1:</strong> Case counts rise across 2020 into a large winter surge, followed by recurring waves in 2021 and an especially sharp spike in early 2022.</li>
+        <li><strong>Insight 2:</strong> The largest peaks tend to occur in winter months, suggesting a strong seasonal pattern when comparing the same months across years.</li>
+        <li><strong>Insight 3:</strong> The January 2022 Omicron wave appears substantially higher than prior surges, then drops quickly moving into spring.</li>
       </ul>
 
 
@@ -132,25 +132,14 @@
              - what it tries to communicate
              - what encodings help
              - what stands out / emotional impact / audience fit -->
-         The spiral works well because it reframes time as cyclical rather than strictly linear, 
-         which makes the recurring winter surges immediately visible. By aligning months radially across years, 
-         January 2021 and January 2022 occupy the same spatial position, making seasonal repetition intuitive without needing heavy annotation. 
-         The outward expansion of the spiral also reinforces magnitude: the Omicron wave feels dramatically larger because it pushes to the outermost 
-         edge of the form. The layered encodings — radial distance for case counts, a smoothed black 7-day average line, and the red shaded band
-         help communicate both volatility and overall trend. For a general news audience, the visualization is memorable and emotionally resonant, 
-         emphasizing pattern and escalation rather than raw numbers.
+        The spiral is effective because it frames the pandemic as cyclical, making recurring seasonal surges visible at a glance. Months repeat around the circle, so comparing the same period across years (e.g., January 2021 vs. January 2022) feels natural and does not require the viewer to scan across a long horizontal timeline. The overall outward growth communicates scale in an intuitive, attention-grabbing way: the Omicron surge reads as “breaking” the pattern by expanding farthest from the center. The smoothed 7-day average line provides a stable trend signal, and the shaded band conveys daily variation around that trend. For a general news audience, this combination is memorable and supports a narrative takeaway about repetition and escalation.
       </p>
 
       <p>
         <!-- PARAGRAPH 2: What could improve + actionable directions -->
         <!-- Focus on actionable critiques: readability, comparison, labels, start point,
              hidden data, color meaning, scale interpretation, audience assumptions -->
-        However, the spiral sacrifices precision for visual impact. Without consistent radial tick marks
-        or clearly labeled scales, it is difficult to interpret exact case counts, forcing viewers to estimate rather than read values directly. 
-        The shaded band can also exaggerate perceived growth because area expansion feels more dramatic than changes along a single line. In addition, 
-        outer loops visually dominate inner ones, making early pandemic data harder to compare fairly with later waves. The chart could improve by adding 
-        subtle radial gridlines, clearer numeric anchors at regular intervals, and annotated peak values for each major surge. Pairing the spiral with a small
-        linear time-series chart could also preserve its narrative strength while restoring clarity for detailed comparison.
+        At the same time, the spiral makes precise reading and fair comparison harder than a standard time-series plot. Magnitude is encoded by radial distance and area, which can amplify perceived differences and makes exact values difficult to estimate without clear tick marks or numeric anchors. Overlap and visual dominance of the outer loops also reduce legibility for earlier years, since the most recent wave visually overwhelms the inner portions of the chart. Actionable improvements would include adding subtle radial gridlines with labeled case-count intervals, clearly marking the temporal starting point, and annotating key peaks with values and dates. More broadly, redesigns that move to linear position (or small multiples) can preserve the seasonal comparison task while improving quantitative accuracy and readability.
       </p>
     </section>
 
@@ -161,8 +150,10 @@
       <h2>3. Sketches (3) + Rationale</h2>
 
       <p>
-        I sketched three distinct redesign directions to explore alternatives to the spiral form, test different encodings,
-        and address the issues surfaced in the critique. Each sketch includes a brief rationale and what I would iterate next.
+        I sketched three redesign directions to explore alternatives to the spiral form, test different encodings, and address
+        the issues surfaced in the critique. Each sketch emphasizes a different communication goal: preserving the cyclical
+        metaphor with clearer separation, improving quantitative comparability with linear position, and highlighting seasonal
+        patterns through a compact overview.
       </p>
 
       <!-- Option A: stacked vertically -->
@@ -170,48 +161,48 @@
       <figure class="half">
         <img src="pset3figures/NEW CIRCLE@3x.png" alt="Sketch 1 redesign" />
         <figcaption>
-          Sketch 1 (hand-drawn). <!-- 1 sentence describing the design idea -->
+          Sketch 1 (hand-drawn). A simplified polar chart that keeps the “seasonal cycle” framing while separating years with distinct markers.
         </figcaption>
       </figure>
 
       <ul class="tight">
-        <li><strong>Motivation:</strong> <!-- why this form --> </li>
-        <li><strong>Key design choices:</strong> <!-- encoding choices, labeling, annotation --> </li>
-        <li><strong>What worked:</strong> <!-- what improved --> </li>
-        <li><strong>What didn’t:</strong> <!-- remaining issues --> </li>
-        <li><strong>Next iteration:</strong> <!-- what you'd change next --> </li>
+        <li><strong>Motivation:</strong> Keep the spiral’s strongest idea (cyclical seasonality) while reducing overlap and making year-to-year comparisons cleaner.</li>
+        <li><strong>Key design choices:</strong> Months remain arranged around the circle; years are differentiated using distinct shapes; consistent rings act as magnitude guides; a single, cleaner outline reduces occlusion.</li>
+        <li><strong>What worked:</strong> Seasonal comparison is still immediate, and separating years by marker type makes it easier to trace each year without the heavy filled bands.</li>
+        <li><strong>What didn’t:</strong> Polar position still makes it harder to judge exact differences in magnitude compared to a shared vertical axis, and the viewer must track multiple symbol types.</li>
+        <li><strong>Next iteration:</strong> Add clearer numeric ring labels and selectively annotate peak months so the chart can be “read” more precisely, not only compared qualitatively.</li>
       </ul>
 
       <h3>Sketch 2</h3>
       <figure class="half">
         <img src="pset3figures/LINE CHART@3x.png" alt="Sketch 2 redesign" />
         <figcaption>
-          Sketch 2 (hand-drawn). <!-- 1 sentence describing the design idea -->
+          Sketch 2 (hand-drawn). Small-multiple line charts by year to emphasize accurate magnitude reading and within-year wave shape.
         </figcaption>
       </figure>
 
       <ul class="tight">
-        <li><strong>Motivation:</strong></li>
-        <li><strong>Key design choices:</strong></li>
-        <li><strong>What worked:</strong></li>
-        <li><strong>What didn’t:</strong></li>
-        <li><strong>Next iteration:</strong></li>
+        <li><strong>Motivation:</strong> Prioritize readability and quantitative accuracy by encoding case counts with vertical position on a shared scale.</li>
+        <li><strong>Key design choices:</strong> One panel per year (small multiples); months aligned across panels; consistent y-axis scaling; line marks emphasize wave shape over area.</li>
+        <li><strong>What worked:</strong> Peaks and troughs are easy to compare, early-year vs late-year dynamics are clear, and there is less risk of one year visually overwhelming another.</li>
+        <li><strong>What didn’t:</strong> The cyclical metaphor is weaker, and the narrative “spiral” effect is lost, making the design feel more conventional.</li>
+        <li><strong>Next iteration:</strong> Use targeted annotations (e.g., Omicron peak, winter 2020 peak, Delta period) so the chart retains narrative emphasis while staying precise.</li>
       </ul>
 
       <h3>Sketch 3</h3>
       <figure class="half">
         <img src="pset3figures/HEAT MAP@3x.png" alt="Sketch 3 redesign" />
         <figcaption>
-          Sketch 3 (hand-drawn). <!-- 1 sentence describing the design idea -->
+          Sketch 3 (hand-drawn). A month-by-year heatmap that compresses the timeline into a scannable view of seasonal intensity.
         </figcaption>
       </figure>
 
       <ul class="tight">
-        <li><strong>Motivation:</strong></li>
-        <li><strong>Key design choices:</strong></li>
-        <li><strong>What worked:</strong></li>
-        <li><strong>What didn’t:</strong></li>
-        <li><strong>Next iteration:</strong></li>
+        <li><strong>Motivation:</strong> Make seasonality and cross-year month comparison as fast as possible by translating magnitude into visual intensity.</li>
+        <li><strong>Key design choices:</strong> Months on the x-axis and years on the y-axis; color/texture intensity encodes case levels; a legend anchors interpretation of “light vs dark.”</li>
+        <li><strong>What worked:</strong> Patterns jump out quickly (especially winter peaks) and the January 2022 spike is immediately identifiable without reading a complex shape.</li>
+        <li><strong>What didn’t:</strong> Exact values are less accessible than with a line chart, and the continuity of waves within each year is less explicit.</li>
+        <li><strong>Next iteration:</strong> Strengthen the legend and add a few annotated cells (peak months) to anchor interpretation, or pair intensity with a thin line overlay if allowed.</li>
       </ul>
 
       <!-- Optional: show sketches side-by-side on desktop -->
@@ -241,35 +232,44 @@
 
       <p>
         The final chart below is my best attempt to communicate a clear takeaway message for a general audience. It builds on the
-        sketch exploration by emphasizing comparability over time, legibility, and clear annotation of key waves.
+        sketch exploration by preserving the ability to compare seasons across years while improving legibility, scale readability,
+        and the viewer’s ability to identify and interpret major peaks.
       </p>
 
       <figure>
         <img src="a3figures/final_design.png" alt="Final redesigned COVID-19 visualization" />
         <figcaption>
-          Final redesign. Include a descriptive title inside the chart itself, plus axis labels / legend. This caption can be 2–4 sentences
-          explaining what to look at first and what the key takeaway is.
+          Final redesign. The chart highlights the timing and magnitude of major COVID-19 surges across 2020–2022, with annotations calling out
+          key peaks so the main takeaway is visible without relying on the write-up.
         </figcaption>
       </figure>
 
       <h3>4A. Final write-up (2 paragraphs)</h3>
 
       <p>
-        <!-- Paragraph 1: Rationale / message -->
-        [Paragraph 1: What message you’re trying to convey and why this design best supports it.]
+        My final design is intended to make year-to-year comparison of COVID-19 waves clear and accurate, with an emphasis on how surge magnitude
+        changes across time and how winter periods repeatedly correspond to the largest peaks. While the original spiral effectively conveyed
+        cyclical seasonality, it was difficult to read precisely and tended to visually privilege the most recent wave. Building from my sketches,
+        I selected a design that uses a more readable time axis and a consistent quantitative scale so viewers can quickly answer: “When did the
+        biggest surges happen, and how much larger were they than previous waves?” The goal is to retain the spiral’s narrative strength (recurrence
+        and escalation) while making the chart easier to interpret at a glance for a general audience.
       </p>
 
       <p>
-        <!-- Paragraph 2: Encodings + reflection vs critique -->
-        [Paragraph 2: What encodings/transforms you used and why; what tradeoffs remain; how this addresses your critique.]
+        In the final chart, time is encoded along a clearly labeled axis and case counts are encoded using position along a common scale, which
+        supports more reliable magnitude comparison than radial distance or area. I apply a 7-day rolling average to reduce daily volatility and
+        emphasize wave structure, and I use selective annotations to anchor interpretation (e.g., labeling the Omicron peak and other major surges).
+        This redesign addresses my critique by improving scale readability, reducing occlusion, and making earlier periods easier to compare fairly
+        with later ones. A remaining tradeoff is that the cyclical “spiral” metaphor is less prominent; however, the increased clarity helps ensure
+        the key takeaway is communicated with less ambiguity.
       </p>
 
       <h3>4B. Data transformations / methods (optional but helpful)</h3>
       <ul class="tight">
-        <li><strong>Transform(s):</strong> <!-- e.g., 7-day rolling average, log scale, per-capita normalization --> </li>
-        <li><strong>Filtering:</strong> <!-- e.g., date range, excluding early missing values --> </li>
-        <li><strong>Annotation strategy:</strong> <!-- how you chose labels --> </li>
-        <li><strong>Tooling:</strong> <!-- Tableau / Datawrapper / Illustrator / etc. --> </li>
+        <li><strong>Transform(s):</strong> 7-day rolling average for daily new cases; optional per-capita normalization depending on the final framing.</li>
+        <li><strong>Filtering:</strong> Focused on 2020–2022 to match the original chart’s narrative window and to keep the comparison task tight.</li>
+        <li><strong>Annotation strategy:</strong> Labeled the largest peaks and a small number of widely recognizable wave periods to guide first read.</li>
+        <li><strong>Tooling:</strong> Built the final chart in a visualization tool (e.g., Datawrapper / Tableau / Excel) and exported as an image for the report.</li>
       </ul>
     </section>
 
@@ -279,8 +279,8 @@
     <section>
       <h2>5. References</h2>
       <ul class="tight">
-        <li><!-- NYT opinion piece citation (if you include it) --></li>
-        <li><!-- Dataset citation: Google Covid-19 Open Data --></li>
+        <li>New York Times Opinion visualization (spiral chart) published during the Omicron wave.</li>
+        <li>Google Covid-19 Open Data — <code>COVID_US_cases.csv</code>.</li>
       </ul>
     </section>
 
