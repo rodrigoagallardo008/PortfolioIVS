@@ -246,29 +246,33 @@
       <h3>4A. Final write-up</h3>
 
       <p>
-        My final design is intended to make year-to-year comparison of COVID-19 waves clear and accurate, with an emphasis on how surge magnitude
-        changes across time and how winter periods repeatedly correspond to the largest peaks. While the original spiral effectively conveyed
-        cyclical seasonality, it was difficult to read precisely and tended to visually privilege the most recent wave. Building from my sketches,
-        I selected a design that uses a more readable time axis and a consistent quantitative scale so viewers can quickly answer: “When did the
-        biggest surges happen, and how much larger were they than previous waves?” The goal is to retain the spiral’s narrative strength (recurrence
-        and escalation) while making the chart easier to interpret at a glance for a general audience.
+        For my final visualization, I wanted the main takeaway to be easy to read at a glance: how the scale of COVID-19 waves changes across 2020–2022, 
+        and just how outsized the Omicron surge was compared to earlier peaks. The original spiral chart does a great job making seasonality feel intuitive, 
+        but it’s harder to compare magnitudes precisely because radial distance is doing a lot of work. I switched to a bar chart on a shared baseline so 
+        comparisons are driven by vertical position, which is more straightforward for most readers. Bars show monthly confirmed cases, and color intensity 
+        reflects magnitude within each year, so you can still read each year as a group while seeing which months spike. The values are based on the 7-day 
+        rolling average of daily confirmed cases to reduce day-to-day noise and make the broader wave structure clearer. Since this is meant to be readable 
+        for a general news audience, I prioritized clarity and quick interpretation over a more “clever” form. I also added annotations for major milestones
+         (national emergency, first vaccine rollout, Delta, Omicron, and the Omicron peak) so the spikes aren’t floating without context.
       </p>
 
       <p>
-        In the final chart, time is encoded along a clearly labeled axis and case counts are encoded using position along a common scale, which
-        supports more reliable magnitude comparison than radial distance or area. I apply a 7-day rolling average to reduce daily volatility and
-        emphasize wave structure, and I use selective annotations to anchor interpretation (e.g., labeling the Omicron peak and other major surges).
-        This redesign addresses my critique by improving scale readability, reducing occlusion, and making earlier periods easier to compare fairly
-        with later ones. A remaining tradeoff is that the cyclical “spiral” metaphor is less prominent; however, the increased clarity helps ensure
-        the key takeaway is communicated with less ambiguity.
+        This redesign directly addresses the main limitation I called out in the spiral: it looks compelling, but it makes it difficult to judge relative
+        scale—especially when you’re trying to compare peaks across years. Moving to a standard Cartesian layout loses some of the spiral’s metaphor and 
+        visual drama, but the tradeoff is that you can actually compare months and years without guessing. In the sketch phase I tried a few different directions 
+        (polar separation, small multiples, and a heatmap), and each one highlighted something different—either the cyclical rhythm, the year-to-year structure,
+         or the density of peaks—but they all came with readability or comparison issues that didn’t feel worth it for this audience. The biggest tension I ran 
+         into was that designs that really emphasize seasonality often make magnitude comparisons harder, and vice versa. My final chart leans into magnitude 
+         comparison while keeping enough time structure (months + year grouping + event annotations) to preserve the “wave” story. What it doesn’t do as well 
+         is show daily volatility or regional differences, but that felt like the right tradeoff for a single, interpretable national summary.
       </p>
 
-      <h3>4B. Data transformations / methods (optional but helpful)</h3>
+      <h3>4B. Data transformations</h3>
       <ul class="tight">
-        <li><strong>Transform(s):</strong> 7-day rolling average for daily new cases; optional per-capita normalization depending on the final framing.</li>
-        <li><strong>Filtering:</strong> Focused on 2020–2022 to match the original chart’s narrative window and to keep the comparison task tight.</li>
-        <li><strong>Annotation strategy:</strong> Labeled the largest peaks and a small number of widely recognizable wave periods to guide first read.</li>
-        <li><strong>Tooling:</strong> Built the final chart in a visualization tool (e.g., Datawrapper / Tableau / Excel) and exported as an image for the report.</li>
+  <li><strong>Transform(s):</strong> Computed a 7-day rolling average of daily confirmed cases and aggregated values to the monthly level.</li>
+  <li><strong>Filtering:</strong> Limited the dataset to U.S. national data for 2020–2022.</li>
+  <li><strong>Derived fields:</strong> Extracted Year and Month from the date for grouping and ordering.</li>
+  <li><strong>Annotation strategy:</strong> Added reference lines and labels for major pandemic milestones and the Omicron peak.</li>
       </ul>
     </section>
 
