@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Vis & Society Assignment 4</title>
+  <link rel="stylesheet" href="https://vis-society.github.io/assignments/report.css" />
+
+  <style>
+    figure img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Smaller centered figures (use class="half") */
+    figure.half {
+      max-width: 50%;
+      margin: 1rem auto;
+    }
+    figure.half img { width: 100%; }
+
+    /* Even smaller (optional) */
+    figure.third {
+      max-width: 38%;
+      margin: 1rem auto;
+    }
+    figure.third img { width: 100%; }
+
+    figure figcaption { font-weight: normal; }
+
+    /* Helper styles */
+    .note {
+      padding: 0.75rem 1rem;
+      border-left: 4px solid #999;
+      background: #f7f7f7;
+    }
+
+    .tight li { margin-bottom: 0.45rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 900px) {
+      .grid.two {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    /* Score badge for deception/earnest scale */
+    .score {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      border: 1px solid #bbb;
+      border-radius: 999px;
+      font-size: 0.9em;
+      margin-left: 0.4rem;
+      white-space: nowrap;
+    }
+
+    /* Optional: decision blocks */
+    .decision {
+      padding: 0.75rem 1rem;
+      background: #fafafa;
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+      margin: 0.75rem 0;
+    }
+
+    .decision h4 {
+      margin: 0 0 0.35rem 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>
+      <small>Assignment 4</small>
+      Persuasive or Deceptive Visualization?
+    </h1>
+
+    <p>
+      <strong>Rodrigo Gallardo</strong> — <em>ragallar@mit.edu</em>
+    </p>
+  </header>
+
+  <main>
+    <!-- ===================== -->
+    <!-- 0) OVERVIEW           -->
+    <!-- ===================== -->
+    <section>
+      <h2>0. Assignment Overview</h2>
+
+      <p>
+        This report presents two visualizations built from the same dataset, designed to persuade readers toward
+        opposing stances on a single proposition. For each visualization, I document the core design decisions
+        and reflect on how persuasion and deception can blur in practice.
+      </p>
+
+      <p class="note">
+        <strong>Dataset:</strong> <code>[dataset_name.csv]</code> (source: <span>[organization / link text]</span>)<br />
+        <strong>Proposition:</strong> <em>[Write your proposition here in one sentence.]</em><br />
+        <strong>Submission:</strong> single HTML page with two visualizations, decisions + rationale, and reflection.
+      </p>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 1) DATA CONTEXT       -->
+    <!-- ===================== -->
+    <section>
+      <h2>1. Data Context (brief)</h2>
+
+      <p>
+        <!-- Keep this short: what the dataset is + the unit of analysis + key variables you used -->
+        The dataset contains <strong>[what it contains]</strong> across <strong>[time span / geography]</strong>.
+        In these visualizations I focus on <strong>[key metric(s)]</strong>, comparing <strong>[groups / categories]</strong>
+        and using <strong>[any major derived fields]</strong>.
+      </p>
+
+      <ul class="tight">
+        <li><strong>Unit of analysis:</strong> [e.g., state-year, complaint, country-year]</li>
+        <li><strong>Primary measure(s):</strong> [e.g., rate per 1,000, emissions, complaints sustained %]</li>
+        <li><strong>Key slice(s):</strong> [e.g., 2000–2022, selected states, specific categories]</li>
+      </ul>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 2) PROPOSITION        -->
+    <!-- ===================== -->
+    <section>
+      <h2>2. Proposition</h2>
+
+      <p>
+        <strong>Proposition:</strong>
+        <em>[Example: “X policy caused Y to increase.”]</em>
+      </p>
+
+      <p class="note">
+        <strong>Goal:</strong> The next two sections intentionally argue opposite sides of the same proposition.
+        The designs may use both earnest and (subtle) deceptive rhetorical techniques.
+      </p>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 3) VIZ A: FOR         -->
+    <!-- ===================== -->
+    <section>
+      <h2>3. Visualization A — Argues <em>for</em> the proposition</h2>
+
+      <p>
+        <!-- 2–4 sentences: what you want reader to conclude + how to read the chart -->
+        This visualization is designed to persuade the reader that <strong>[proposition is true]</strong> by highlighting
+        <strong>[the key pattern]</strong>. Read it by focusing on <strong>[what to compare]</strong>.
+      </p>
+
+      <figure>
+        <img src="a4figures/viz_for.png" alt="Visualization arguing for the proposition" />
+        <figcaption>
+          <strong>Figure 1.</strong> [Caption that frames the argument “for” without being cartoonishly biased.]
+        </figcaption>
+      </figure>
+
+      <h3>3A. Key design decisions (3–5)</h3>
+
+      <!-- Decision template: copy/paste 3–5 times -->
+      <div class="decision">
+        <h4>
+          Decision 1: [e.g., Truncated y-axis to emphasize change]
+          <span class="score">Score: [-2 … 2]</span>
+        </h4>
+        <p>
+          <!-- 2–4 sentences: what you did, why it persuades, alternatives -->
+          [Describe the decision and your rationale. What did it amplify? What did it downplay? What alternative did you consider?]
+        </p>
+      </div>
+
+      <div class="decision">
+        <h4>
+          Decision 2: [e.g., Filtered to a specific time window]
+          <span class="score">Score: [-2 … 2]</span>
+        </h4>
+        <p>
+          [Describe the decision and your rationale.]
+        </p>
+      </div>
+
+      <div class="decision">
+        <h4>
+          Decision 3: [e.g., Title framing + annotation choices]
+          <span class="score">Score: [-2 … 2]</span>
+        </h4>
+        <p>
+          [Describe the decision and your rationale.]
+        </p>
+      </div>
+
+      <!-- Optional: include 2 more -->
+      <!--
+      <div class="decision">
+        <h4>Decision 4: ... <span class="score">Score: ...</span></h4>
+        <p>...</p>
+      </div>
+      -->
+    </section>
+
+    <!-- ===================== -->
+    <!-- 4) VIZ B: AGAINST     -->
+    <!-- ===================== -->
+    <section>
+      <h2>4. Visualization B — Argues <em>against</em> the proposition</h2>
+
+      <p>
+        This visualization is designed to persuade the reader that <strong>[proposition is not supported / is misleading / is incomplete]</strong>
+        by emphasizing <strong>[counter-pattern, uncertainty, broader context]</strong>. Read it by focusing on <strong>[what to compare]</strong>.
+      </p>
+
+      <figure>
+        <img src="a4figures/viz_against.png" alt="Visualization arguing against the proposition" />
+        <figcaption>
+          <strong>Figure 2.</strong> [Caption that frames the argument “against.”]
+        </figcaption>
+      </figure>
+
+      <h3>4A. Key design decisions (3–5)</h3>
+
+      <div class="decision">
+        <h4>
+          Decision 1: [e.g., Use full y-axis starting at zero]
+          <span class="score">Score: [-2 … 2]</span>
+        </h4>
+        <p>
+          [Describe the decision and your rationale.]
+        </p>
+      </div>
+
+      <div class="decision">
+        <h4>
+          Decision 2: [e.g., Include all years / show distribution instead of a single trend]
+          <span class="score">Score: [-2 … 2]</span>
+        </h4>
+        <p>
+          [Describe the decision and your rationale.]
+        </p>
+      </div>
+
+      <div class="decision">
+        <h4>
+          Decision 3: [e.g., Neutral title + uncertainty annotations]
+          <span class="score">Score: [-2 … 2]</span>
+        </h4>
+        <p>
+          [Describe the decision and your rationale.]
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 5) REFLECTION         -->
+    <!-- ===================== -->
+    <section>
+      <h2>5. Final Reflection (1–2 paragraphs)</h2>
+
+      <p>
+        <!-- Paragraph 1: process + what was hard/surprising -->
+        [Write about how you developed the proposition, what you discovered in EDA, and what was straightforward vs difficult.
+        Mention at least one moment where a “small” choice changed the story a lot.]
+      </p>
+
+      <p>
+        <!-- Paragraph 2: ethics + boundaries -->
+        [Define what “ethical analysis and visualization” means to you after doing this. Where do you draw lines (if any) between
+        acceptable persuasion vs misleading? If you don’t think there’s a clean line, say why and what you’d do in practice.]
+      </p>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 6) METHODS / TRANSFORMS (OPTIONAL BUT HELPFUL) -->
+    <!-- ===================== -->
+    <section>
+      <h2>6. Data Transformations &amp; Notes (optional)</h2>
+
+      <ul class="tight">
+        <li><strong>Cleaning:</strong> [e.g., removed nulls, standardized names]</li>
+        <li><strong>Derived fields:</strong> [e.g., per-capita rate, bins, rolling averages]</li>
+        <li><strong>Filters:</strong> [e.g., selected states, selected categories, time window]</li>
+        <li><strong>Known limitations:</strong> [e.g., missingness, reporting changes, confounds]</li>
+      </ul>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 7) REFERENCES         -->
+    <!-- ===================== -->
+    <section>
+      <h2>7. References</h2>
+      <ul class="tight">
+        <li>[Dataset source citation / link text]</li>
+        <li>Hullman &amp; Diakopoulos (2011), <em>Visualization Rhetoric</em>.</li>
+        <li>Kong et al. (2018), <em>Frames and Slants in Titles</em>.</li>
+        <!-- Add any other sources you reference -->
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rodrigo Gallardo</p>
+  </footer>
+</body>
+</html>
