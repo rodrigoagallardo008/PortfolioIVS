@@ -148,64 +148,151 @@
     <!-- ===================== -->
     <!-- 3) VIZ A: FOR         -->
     <!-- ===================== -->
-    <section>
-      <h2>3. Visualization A — Argues <em>for</em> the proposition</h2>
+<section>
+  <h2>1. Data Context</h2>
 
-      <p>
-        <!-- 2–4 sentences: what you want reader to conclude + how to read the chart -->
-        This visualization is designed to persuade the reader that <strong>[proposition is true]</strong> by highlighting
-        <strong>[the key pattern]</strong>. Read it by focusing on <strong>[what to compare]</strong>.
-      </p>
+  <p>
+    The dataset used in this project comes from the Guttmacher Institute and contains
+    state-level information about abortion services in the United States. The dataset
+    includes measures such as abortion rates, number of providers, clinic counts,
+    and indicators of geographic access to abortion services.
+  </p>
 
-      <figure>
-        <img src="a4figures/viz_for.png" alt="Visualization arguing for the proposition" />
-        <figcaption>
-          <strong>Figure 1.</strong> [Caption that frames the argument “for” without being cartoonishly biased.]
-        </figcaption>
-      </figure>
+  <p>
+    For this first visualization, I focus specifically on the variable
+    <strong>“Percent of counties without a known abortion clinic (2020)”</strong>.
+    This measure highlights geographic barriers to abortion access by showing how
+    much of each state lacks a clinic provider. Rather than focusing on the number
+    of abortions performed, this metric emphasizes how unevenly abortion services
+    are distributed across space.
+  </p>
 
-      <h3>3A. Key design decisions (3–5)</h3>
+  <ul class="tight">
+    <li><strong>Unit of analysis:</strong> U.S. state</li>
+    <li><strong>Primary measure:</strong> Percent of counties without a known abortion clinic (2020)</li>
+    <li><strong>Geographic scope:</strong> United States</li>
+    <li><strong>Time period:</strong> 2020</li>
+  </ul>
+</section>
 
-      <!-- Decision template: copy/paste 3–5 times -->
-      <div class="decision">
-        <h4>
-          Decision 1: [e.g., Truncated y-axis to emphasize change]
-          <span class="score">Score: [-2 … 2]</span>
-        </h4>
-        <p>
-          <!-- 2–4 sentences: what you did, why it persuades, alternatives -->
-          [Describe the decision and your rationale. What did it amplify? What did it downplay? What alternative did you consider?]
-        </p>
-      </div>
+<section>
+  <h2>2. Proposition</h2>
 
-      <div class="decision">
-        <h4>
-          Decision 2: [e.g., Filtered to a specific time window]
-          <span class="score">Score: [-2 … 2]</span>
-        </h4>
-        <p>
-          [Describe the decision and your rationale.]
-        </p>
-      </div>
+  <p>
+    <strong>Proposition:</strong>
+    <em>Access to abortion services in the United States is declining.</em>
+  </p>
 
-      <div class="decision">
-        <h4>
-          Decision 3: [e.g., Title framing + annotation choices]
-          <span class="score">Score: [-2 … 2]</span>
-        </h4>
-        <p>
-          [Describe the decision and your rationale.]
-        </p>
-      </div>
+  <p class="note">
+    The next two visualizations use the same dataset but present opposing arguments.
+    This first visualization is intentionally designed to persuade the reader that
+    abortion access is becoming more limited by emphasizing geographic barriers to clinics.
+  </p>
+</section>
 
-      <!-- Optional: include 2 more -->
-      <!--
-      <div class="decision">
-        <h4>Decision 4: ... <span class="score">Score: ...</span></h4>
-        <p>...</p>
-      </div>
-      -->
-    </section>
+<section>
+  <h2>3. Visualization A — Argues <em>for</em> the proposition</h2>
+
+  <p>
+    This visualization is designed to persuade the reader that abortion access in
+    the United States is declining by emphasizing the large share of counties in
+    many states that do not have a known abortion clinic. The chart focuses on
+    geographic absence rather than service totals, encouraging the viewer to think
+    about access as a question of local availability and physical proximity.
+  </p>
+
+  <p>
+    States are sorted from highest to lowest percentage of counties without clinics,
+    which immediately foregrounds the most extreme cases. By filtering the chart to
+    show only states where more than 70% of counties lack a clinic, the visualization
+    concentrates attention on the strongest evidence for a narrative of shrinking access.
+    Together, these choices frame the dataset as showing widespread geographic barriers
+    to abortion care.
+  </p>
+
+  <figure>
+    <img src="pset4figures/Visualization 1.png" alt="Bar chart showing states with high percentages of counties without abortion clinics" />
+    <figcaption>
+      <strong>Figure 1.</strong> Many U.S. states had large shares of counties without an abortion clinic in 2020, suggesting substantial geographic barriers to access.
+    </figcaption>
+  </figure>
+
+  <h3>3A. Key design decisions</h3>
+
+  <div class="decision">
+    <h4>
+      Decision 1: Filtering the dataset to states where more than 70% of counties lack a clinic
+      <span class="score">Score: -1.5</span>
+    </h4>
+    <p>
+      I filtered the dataset so that the chart only includes states where at least
+      70% of counties lacked a known abortion clinic. This choice makes the overall
+      problem appear more severe by excluding states with lower levels of geographic
+      inaccessibility. While the underlying values are accurate, this restricted frame
+      narrows the viewer’s perspective and strengthens the impression that poor access
+      is the dominant national pattern.
+    </p>
+  </div>
+
+  <div class="decision">
+    <h4>
+      Decision 2: Sorting states from highest to lowest percentage of counties without clinics
+      <span class="score">Score: 1</span>
+    </h4>
+    <p>
+      The bars are ordered from the highest percentage of counties without clinics to
+      the lowest, placing the most extreme cases at the top. This makes the chart easier
+      to read and compare, but it also reinforces the intended argument by ensuring that
+      viewers encounter the strongest evidence first. I considered leaving the states in
+      alphabetical order, but that would have weakened the persuasive impact and made the
+      pattern less immediately visible.
+    </p>
+  </div>
+
+  <div class="decision">
+    <h4>
+      Decision 3: Using a red gradient color scale to encode severity
+      <span class="score">Score: -0.5</span>
+    </h4>
+    <p>
+      I used a red gradient so that darker bars correspond to higher percentages of
+      counties without clinics. Although color is a standard encoding for magnitude,
+      the choice of red also carries emotional associations with urgency, danger, and
+      alarm. This subtly amplifies the seriousness of the access problem and helps the
+      chart feel more forceful than a more neutral palette would have.
+    </p>
+  </div>
+
+  <div class="decision">
+    <h4>
+      Decision 4: Framing the chart with a strongly interpretive title and annotations
+      <span class="score">Score: -1</span>
+    </h4>
+    <p>
+      The title and annotations guide the viewer toward interpreting the chart as
+      evidence of declining abortion access. Phrases such as “severe geographic barriers
+      to access” and “near-total clinic absence across counties” focus attention on the
+      most extreme values and encourage the reader to treat them as representative of a
+      broader national trend. These textual elements do important rhetorical work by
+      shaping not just what the viewer sees, but how the viewer is meant to interpret it.
+    </p>
+  </div>
+
+  <div class="decision">
+    <h4>
+      Decision 5: Measuring access through county-level clinic absence rather than abortion counts
+      <span class="score">Score: -0.5</span>
+    </h4>
+    <p>
+      I chose to visualize the percentage of counties without a clinic rather than the
+      total number of abortions or abortion rates. This measure supports the proposition
+      more effectively because it frames abortion access in terms of physical availability
+      and spatial barriers instead of service volume. I considered using total abortion
+      counts, but that would have made it easier to argue that services remain active and
+      available, which would weaken the intended message of decline.
+    </p>
+  </div>
+</section>
 
     <!-- ===================== -->
     <!-- 4) VIZ B: AGAINST     -->
