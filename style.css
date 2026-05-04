@@ -1,6 +1,5 @@
 /* ===========================
    Rodrigo — PortfolioIVS Theme
-   Similar vibe to Diana’s CSS:
    - clean centered layout
    - nav with current + hover underline
    - home header text + hero image
@@ -42,8 +41,12 @@ img{
   display: block;
 }
 
-h1,h2,h3,h4,h5,h6{ line-height: 1.1; }
-h1{ font-size: 2rem; margin: 0.5em 0 0.75em; }
+h1,h2,h3,h4,h5,h6{
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1{ font-size: 4rem; margin: 0.5em 0 0.75em; }
 h2{ font-size: 1.4rem; margin: 0.75em 0 0.5em; }
 
 /* ---------------------------
@@ -105,7 +108,7 @@ nav a.current{
 }
 
 /* ---------------------------
-   Card utility (optional)
+   Card utility
 --------------------------- */
 .card{
   background: var(--card);
@@ -184,7 +187,7 @@ nav a.current{
 .contact-form button:active{ transform: translateY(1px); }
 
 /* ---------------------------
-   Projects grid (optional)
+   Projects grid
 --------------------------- */
 .projects{
   display: grid;
@@ -194,6 +197,9 @@ nav a.current{
 }
 
 .projects article{
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 4;
   background: var(--card);
   border-radius: 0.85em;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
@@ -213,6 +219,46 @@ nav a.current{
 .projects p{
   margin: 0;
   line-height: 1.4;
+}
+
+.projects article img{
+  width: 100%;
+  border-radius: 0.5em;
+  object-fit: cover;
+  height: 180px;
+}
+
+.projects article a{
+  display: inline-block;
+  margin-top: 0.75em;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.projects article a:hover{
+  text-decoration: underline;
+}
+
+/* ---------------------------
+   Resume
+--------------------------- */
+.resume section{
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.resume h2{
+  color: var(--accent);
+}
+
+.resume article{
+  margin-bottom: 1.25em;
+}
+
+.resume ul{
+  padding-left: 1.5em;
 }
 
 /* ---------------------------
@@ -242,6 +288,8 @@ nav a.current{
 --------------------------- */
 @media (max-width: 700px){
   body{ max-width: 92vw; }
+
+  h1{ font-size: 2.5rem; }
 
   nav{
     gap: 0.5rem;
