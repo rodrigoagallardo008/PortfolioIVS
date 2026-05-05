@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-
-    <!-- Link to same stylesheet -->
-    <link rel="stylesheet" href="../style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact – Rodrigo Gallardo</title>
+  <link rel="stylesheet" href="/PortfolioIVS/style.css" />
 </head>
 
 <body>
@@ -20,28 +18,31 @@
     <a href="https://github.com/rodrigoagallardo008" target="_blank">GitHub</a>
   </nav>
 
-<h1>Contact Information</h1>
+  <h1>Contact</h1>
 
-<form action="mailto:ragallar@mit.edu" method="GET">
+  <div class="home-header">
+    <p>
+      Feel free to reach out for collaborations, research, or project inquiries.
+      Email is usually the best way to contact me.
+    </p>
+  </div>
 
-    <label>
-        Email:
-        <input name="email" type="email">
-    </label>
+  <section class="contact-form">
+    <form action="mailto:ragallar@mit.edu" method="GET">
 
-    <label>
-        Subject:
-        <input name="subject">
-    </label>
+      <label for="email">Your Email:</label>
+      <input id="email" name="email" type="email" required>
 
-    <label>
-        Message:
-        <textarea name="body"></textarea>
-    </label>
+      <label for="subject">Subject:</label>
+      <input id="subject" name="subject" type="text" required>
 
-    <button type="submit">Send</button>
+      <label for="body">Message:</label>
+      <textarea id="body" name="body" required></textarea>
 
-</form>
+      <button type="submit">Send</button>
+
+    </form>
+  </section>
 
 </body>
 </html>
