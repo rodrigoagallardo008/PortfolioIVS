@@ -4,24 +4,15 @@
   <meta charset="utf-8" />
   <title>Vis & Society Assignment 4</title>
   <link rel="stylesheet" href="https://vis-society.github.io/assignments/report.css" />
-
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <style>
-    figure img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    figure figcaption { font-weight: normal; }
-
     .note {
       padding: 0.75rem 1rem;
       border-left: 4px solid #999;
       background: #f7f7f7;
+      margin: 1rem 0;
     }
-
     .tight li { margin-bottom: 0.45rem; }
-
     .score {
       display: inline-block;
       padding: 0.1rem 0.5rem;
@@ -31,7 +22,6 @@
       margin-left: 0.4rem;
       white-space: nowrap;
     }
-
     .decision {
       padding: 0.75rem 1rem;
       background: #fafafa;
@@ -39,22 +29,27 @@
       border-radius: 8px;
       margin: 0.75rem 0;
     }
-
-    .decision h4 {
-      margin: 0 0 0.35rem 0;
+    .decision h4 { margin: 0 0 0.35rem 0; }
+    .vis-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    figcaption {
+      font-size: 0.92em;
+      color: #444;
+      margin-top: 0.5rem;
+      line-height: 1.5;
     }
   </style>
 </head>
-
 <body>
   <header>
     <h1>
       <small>Assignment 4</small>
       Persuasive or Deceptive Visualization?
     </h1>
-    <p>
-      <strong>Rodrigo Gallardo</strong> — <em>ragallar@mit.edu</em>
-    </p>
+    <p><strong>Rodrigo Gallardo</strong> — <em>ragallar@mit.edu</em></p>
   </header>
 
   <main>
@@ -62,21 +57,18 @@
     <section>
       <h2>1. Data Context</h2>
       <p>
-        The dataset used in this project comes from the Guttmacher Institute and contains
-        state-level information about abortion services in the United States. It includes
-        measures such as abortion rates, number of providers, clinic counts, and indicators
-        of geographic access to abortion services.
+        The dataset comes from the Guttmacher Institute and contains state-level information
+        about abortion services in the United States, including clinic counts, abortion rates,
+        provider numbers, and indicators of geographic access.
       </p>
       <ul class="tight">
-        <li><strong>Unit of analysis:</strong> U.S. state</li>
-        <li><strong>Primary measures:</strong> Percent of counties without a known abortion clinic (2020); abortion rate per 1,000 women aged 15–19 by state of residence (2017)</li>
-        <li><strong>Geographic scope:</strong> United States (all 50 states + D.C.)</li>
-        <li><strong>Time period:</strong> 2017 and 2020 (single cross-sections, not a time series)</li>
+        <li><strong>Unit of analysis:</strong> U.S. state (50 states + D.C.)</li>
+        <li><strong>Key measures used:</strong> % of counties without a known abortion clinic (2020); abortion rate per 1,000 women aged 15-19 by state of residence (2017); % of residents who traveled out of state for care (2020)</li>
+        <li><strong>Time period:</strong> Primarily 2017 and 2020 cross-sections, not a continuous time series</li>
       </ul>
       <p class="note">
-        <strong>Important limitation:</strong> Both visualizations use single-year cross-sectional snapshots.
-        Neither dataset includes multiple time points, so no direct "trend over time" can be shown.
-        The proposition and takeaway messages are framed accordingly.
+        <strong>Important limitation:</strong> Both visualizations use single-year cross-sectional
+        snapshots. No direct trend over time can be shown from this dataset alone.
       </p>
     </section>
 
@@ -84,238 +76,180 @@
       <h2>2. Proposition</h2>
       <p>
         <strong>Proposition:</strong>
-        <em>Abortion access in the United States is severely and unequally distributed — most counties across many states lack any abortion clinic, while a small number of states concentrate the bulk of abortion services.</em>
+        <em>Abortion access in the United States is severely and unequally distributed:
+        most counties across many states lack any abortion clinic, while a small number of
+        states concentrate the bulk of abortion services.</em>
       </p>
       <p class="note">
-        The two visualizations use the same underlying dataset but emphasize different variables and
+        The two visualizations use the same dataset but emphasize different variables and
         framings to argue opposing conclusions about how accessible abortion services are in the U.S.
       </p>
     </section>
 
     <section>
-      <h2>3. Visualization A — Argues <em>for</em> the proposition</h2>
+      <h2>3. Visualization A -- Argues <em>for</em> the proposition</h2>
       <p>
-        This visualization argues that abortion access in the United States is severely and unequally
-        distributed by highlighting the share of counties in each state that lack any known abortion
-        clinic. Rather than measuring how many abortions occur, this chart measures physical proximity
-        to care — whether a county even has a provider. By filtering to states where over 70% of counties
-        have no clinic and sorting from worst to best, the chart foregrounds the scale of geographic
-        absence and frames it as the dominant national pattern.
-      </p>
-      <p>
-        The bars all cluster between 75% and 100%, which intentionally compresses the visible variation
-        to make even the "better" states in this filtered view still appear to have high rates of clinic
-        absence. Color encodes whether a state is in the South or not — a dimension beyond bar length —
-        to highlight that the pattern is not purely regional: non-Southern states appear throughout
-        the chart at similarly extreme levels.
+        This visualization shows the share of counties in each state that have no known abortion
+        clinic, displayed as a choropleth map. The geographic framing is intentional: the argument
+        is fundamentally spatial, and showing it on a map makes the scale of the problem feel
+        immediate in a way a bar chart does not. Most of the country turns up deep red, and that
+        visual impression does a lot of the persuasive work before the reader even checks the legend.
       </p>
 
       <figure>
-        <img src="pset4figures/visualization_2NEW.png"
-             alt="Horizontal bar chart showing states where over 70% of counties lack an abortion clinic, sorted from highest to lowest, with color indicating Southern vs. non-Southern states." />
+        <div class="vis-container">
+          <div>                            <div id="vis1" class="plotly-graph-div" style="height:520px; width:900px;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("vis1")) {                    Plotly.newPlot(                        "vis1",                        [{"colorbar":{"len":0.6,"thickness":16,"ticksuffix":"%","title":{"font":{"size":11},"text":"% of counties\u003cbr\u003ewithout a clinic"},"x":1.0},"colorscale":[[0.0,"#fff5f0"],[0.3,"#fc9272"],[0.6,"#de2d26"],[1.0,"#67000d"]],"customdata":["\u003cb\u003eAlabama\u003c\u002fb\u003e\u003cbr\u003e93% of counties lack a clinic\u003cbr\u003e59% of women live without clinic access\u003cbr\u003e47% traveled out of state","\u003cb\u003eAlaska\u003c\u002fb\u003e\u003cbr\u003e87% of counties lack a clinic\u003cbr\u003e33% of women live without clinic access\u003cbr\u003e7% traveled out of state","\u003cb\u003eArizona\u003c\u002fb\u003e\u003cbr\u003e80% of counties lack a clinic\u003cbr\u003e18% of women live without clinic access\u003cbr\u003e6% traveled out of state","\u003cb\u003eArkansas\u003c\u002fb\u003e\u003cbr\u003e99% of counties lack a clinic\u003cbr\u003e86% of women live without clinic access\u003cbr\u003e37% traveled out of state","\u003cb\u003eCalifornia\u003c\u002fb\u003e\u003cbr\u003e38% of counties lack a clinic\u003cbr\u003e3% of women live without clinic access\u003cbr\u003e0% traveled out of state","\u003cb\u003eColorado\u003c\u002fb\u003e\u003cbr\u003e77% of counties lack a clinic\u003cbr\u003e26% of women live without clinic access\u003cbr\u003e1% traveled out of state","\u003cb\u003eConnecticut\u003c\u002fb\u003e\u003cbr\u003e0% of counties lack a clinic\u003cbr\u003e0% of women live without clinic access\u003cbr\u003e6% traveled out of state","\u003cb\u003eDelaware\u003c\u002fb\u003e\u003cbr\u003e33% of counties lack a clinic\u003cbr\u003e19% of women live without clinic access\u003cbr\u003e44% traveled out of state","\u003cb\u003eFlorida\u003c\u002fb\u003e\u003cbr\u003e75% of counties lack a clinic\u003cbr\u003e25% of women live without clinic access\u003cbr\u003e1% traveled out of state","\u003cb\u003eGeorgia\u003c\u002fb\u003e\u003cbr\u003e95% of counties lack a clinic\u003cbr\u003e55% of women live without clinic access\u003cbr\u003e5% traveled out of state","\u003cb\u003eHawaii\u003c\u002fb\u003e\u003cbr\u003e40% of counties lack a clinic\u003cbr\u003e5% of women live without clinic access\u003cbr\u003e2% traveled out of state","\u003cb\u003eIdaho\u003c\u002fb\u003e\u003cbr\u003e95% of counties lack a clinic\u003cbr\u003e67% of women live without clinic access\u003cbr\u003e26% traveled out of state","\u003cb\u003eIllinois\u003c\u002fb\u003e\u003cbr\u003e89% of counties lack a clinic\u003cbr\u003e32% of women live without clinic access\u003cbr\u003e1% traveled out of state","\u003cb\u003eIndiana\u003c\u002fb\u003e\u003cbr\u003e95% of counties lack a clinic\u003cbr\u003e66% of women live without clinic access\u003cbr\u003e31% traveled out of state","\u003cb\u003eIowa\u003c\u002fb\u003e\u003cbr\u003e95% of counties lack a clinic\u003cbr\u003e65% of women live without clinic access\u003cbr\u003e12% traveled out of state","\u003cb\u003eKansas\u003c\u002fb\u003e\u003cbr\u003e98% of counties lack a clinic\u003cbr\u003e60% of women live without clinic access\u003cbr\u003e4% traveled out of state","\u003cb\u003eKentucky\u003c\u002fb\u003e\u003cbr\u003e99% of counties lack a clinic\u003cbr\u003e82% of women live without clinic access\u003cbr\u003e39% traveled out of state","\u003cb\u003eLouisiana\u003c\u002fb\u003e\u003cbr\u003e95% of counties lack a clinic\u003cbr\u003e75% of women live without clinic access\u003cbr\u003e21% traveled out of state","\u003cb\u003eMaine\u003c\u002fb\u003e\u003cbr\u003e12% of counties lack a clinic\u003cbr\u003e16% of women live without clinic access\u003cbr\u003e5% traveled out of state","\u003cb\u003eMaryland\u003c\u002fb\u003e\u003cbr\u003e62% of counties lack a clinic\u003cbr\u003e23% of women live without clinic access\u003cbr\u003e17% traveled out of state","\u003cb\u003eMassachusetts\u003c\u002fb\u003e\u003cbr\u003e50% of counties lack a clinic\u003cbr\u003e14% of women live without clinic access\u003cbr\u003e6% traveled out of state","\u003cb\u003eMichigan\u003c\u002fb\u003e\u003cbr\u003e86% of counties lack a clinic\u003cbr\u003e34% of women live without clinic access\u003cbr\u003e1% traveled out of state","\u003cb\u003eMinnesota\u003c\u002fb\u003e\u003cbr\u003e95% of counties lack a clinic\u003cbr\u003e58% of women live without clinic access\u003cbr\u003e3% traveled out of state","\u003cb\u003eMississippi\u003c\u002fb\u003e\u003cbr\u003e99% of counties lack a clinic\u003cbr\u003e92% of women live without clinic access\u003cbr\u003e44% traveled out of state","\u003cb\u003eMissouri\u003c\u002fb\u003e\u003cbr\u003e99% of counties lack a clinic\u003cbr\u003e94% of women live without clinic access\u003cbr\u003e99% traveled out of state","\u003cb\u003eMontana\u003c\u002fb\u003e\u003cbr\u003e91% of counties lack a clinic\u003cbr\u003e47% of women live without clinic access\u003cbr\u003e3% traveled out of state","\u003cb\u003eNebraska\u003c\u002fb\u003e\u003cbr\u003e97% of counties lack a clinic\u003cbr\u003e39% of women live without clinic access\u003cbr\u003e8% traveled out of state","\u003cb\u003eNevada\u003c\u002fb\u003e\u003cbr\u003e88% of counties lack a clinic\u003cbr\u003e9% of women live without clinic access\u003cbr\u003e4% traveled out of state","\u003cb\u003eNew Hampshire\u003c\u002fb\u003e\u003cbr\u003e60% of counties lack a clinic\u003cbr\u003e30% of women live without clinic access\u003cbr\u003e23% traveled out of state","\u003cb\u003eNew Jersey\u003c\u002fb\u003e\u003cbr\u003e29% of counties lack a clinic\u003cbr\u003e21% of women live without clinic access\u003cbr\u003e6% traveled out of state","\u003cb\u003eNew Mexico\u003c\u002fb\u003e\u003cbr\u003e91% of counties lack a clinic\u003cbr\u003e48% of women live without clinic access\u003cbr\u003e8% traveled out of state","\u003cb\u003eNew York\u003c\u002fb\u003e\u003cbr\u003e37% of counties lack a clinic\u003cbr\u003e6% of women live without clinic access\u003cbr\u003e1% traveled out of state","\u003cb\u003eNorth Carolina\u003c\u002fb\u003e\u003cbr\u003e91% of counties lack a clinic\u003cbr\u003e53% of women live without clinic access\u003cbr\u003e2% traveled out of state","\u003cb\u003eNorth Dakota\u003c\u002fb\u003e\u003cbr\u003e98% of counties lack a clinic\u003cbr\u003e72% of women live without clinic access\u003cbr\u003e13% traveled out of state","\u003cb\u003eOhio\u003c\u002fb\u003e\u003cbr\u003e93% of counties lack a clinic\u003cbr\u003e55% of women live without clinic access\u003cbr\u003e10% traveled out of state","\u003cb\u003eOklahoma\u003c\u002fb\u003e\u003cbr\u003e96% of counties lack a clinic\u003cbr\u003e53% of women live without clinic access\u003cbr\u003e5% traveled out of state","\u003cb\u003eOregon\u003c\u002fb\u003e\u003cbr\u003e75% of counties lack a clinic\u003cbr\u003e22% of women live without clinic access\u003cbr\u003e5% traveled out of state","\u003cb\u003ePennsylvania\u003c\u002fb\u003e\u003cbr\u003e82% of counties lack a clinic\u003cbr\u003e38% of women live without clinic access\u003cbr\u003e14% traveled out of state","\u003cb\u003eRhode Island\u003c\u002fb\u003e\u003cbr\u003e80% of counties lack a clinic\u003cbr\u003e36% of women live without clinic access\u003cbr\u003e17% traveled out of state","\u003cb\u003eSouth Carolina\u003c\u002fb\u003e\u003cbr\u003e93% of counties lack a clinic\u003cbr\u003e71% of women live without clinic access\u003cbr\u003e57% traveled out of state","\u003cb\u003eSouth Dakota\u003c\u002fb\u003e\u003cbr\u003e98% of counties lack a clinic\u003cbr\u003e76% of women live without clinic access\u003cbr\u003e84% traveled out of state","\u003cb\u003eTennessee\u003c\u002fb\u003e\u003cbr\u003e95% of counties lack a clinic\u003cbr\u003e61% of women live without clinic access\u003cbr\u003e23% traveled out of state","\u003cb\u003eTexas\u003c\u002fb\u003e\u003cbr\u003e96% of counties lack a clinic\u003cbr\u003e44% of women live without clinic access\u003cbr\u003e8% traveled out of state","\u003cb\u003eUtah\u003c\u002fb\u003e\u003cbr\u003e97% of counties lack a clinic\u003cbr\u003e64% of women live without clinic access\u003cbr\u003e8% traveled out of state","\u003cb\u003eVermont\u003c\u002fb\u003e\u003cbr\u003e64% of counties lack a clinic\u003cbr\u003e38% of women live without clinic access\u003cbr\u003e7% traveled out of state","\u003cb\u003eVirginia\u003c\u002fb\u003e\u003cbr\u003e92% of counties lack a clinic\u003cbr\u003e79% of women live without clinic access\u003cbr\u003e25% traveled out of state","\u003cb\u003eWashington\u003c\u002fb\u003e\u003cbr\u003e56% of counties lack a clinic\u003cbr\u003e9% of women live without clinic access\u003cbr\u003e5% traveled out of state","\u003cb\u003eWest Virginia\u003c\u002fb\u003e\u003cbr\u003e98% of counties lack a clinic\u003cbr\u003e90% of women live without clinic access\u003cbr\u003e52% traveled out of state","\u003cb\u003eWisconsin\u003c\u002fb\u003e\u003cbr\u003e96% of counties lack a clinic\u003cbr\u003e68% of women live without clinic access\u003cbr\u003e17% traveled out of state","\u003cb\u003eWyoming\u003c\u002fb\u003e\u003cbr\u003e96% of counties lack a clinic\u003cbr\u003e96% of women live without clinic access\u003cbr\u003e88% traveled out of state"],"hovertemplate":"%{customdata}\u003cextra\u003e\u003c\u002fextra\u003e","locationmode":"USA-states","locations":["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],"marker":{"line":{"color":"white","width":0.8}},"z":[93,87,80,99,38,77,0,33,75,95,40,95,89,95,95,98,99,95,12,62,50,86,95,99,99,91,97,88,60,29,91,37,91,98,93,96,75,82,80,93,98,95,96,97,64,92,56,98,96,96],"zmax":100,"zmin":20,"type":"choropleth"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"annotations":[{"bgcolor":"rgba(255,255,255,0.8)","bordercolor":"#de2d26","borderwidth":1,"font":{"color":"#666","size":10},"showarrow":false,"text":"In 37 of 50 states, over 70% of counties lack a clinic. Hover over any state for details.","x":0.5,"xref":"paper","y":-0.04,"yref":"paper","xanchor":"center"},{"bgcolor":"rgba(255,255,255,0.8)","bordercolor":"#aaa","borderwidth":1,"font":{"color":"#666","size":10},"showarrow":false,"text":"In 37 of 50 states, over 70% of counties lack a clinic. Hover over any state for details.","x":0.5,"xref":"paper","y":-0.04,"yref":"paper","xanchor":"center"}],"title":{"font":{"size":18},"text":"\u003cb\u003eMost U.S. Counties Have No Abortion Clinic\u003c\u002fb\u003e\u003cbr\u003e\u003csup\u003ePercent of counties without a known abortion clinic, by state (2020)\u003c\u002fsup\u003e","x":0.02,"xanchor":"left"},"geo":{"scope":"usa","showlakes":false,"showland":true,"landcolor":"#f8f8f8","showframe":false,"bgcolor":"white"},"margin":{"l":20,"r":20,"t":80,"b":40},"paper_bgcolor":"white","width":900,"height":520},                        {"responsive": true}                    )                };            </script>        </div>
+        </div>
         <figcaption>
-          <strong>Figure 1.</strong> In 2020, more than 70% of counties in 37 U.S. states had no known
-          abortion clinic. This chart is filtered to show only those states and sorted from highest to
-          lowest to emphasize the scale of geographic absence. Color distinguishes Southern states
-          (dark red) from non-Southern states (lighter red), showing the pattern is not confined
-          to one region. Even Oregon — the lowest bar — still lacks clinics in 75% of its counties.
+          <strong>Figure 1.</strong> Percent of counties without a known abortion clinic, by state (2020).
+          In 37 of 50 states, more than 70% of counties lack any clinic. Hover over any state for details.
+          D.C. is excluded from the map but has among the best clinic access in the country.
         </figcaption>
       </figure>
 
       <h3>3A. Key design decisions</h3>
 
       <div class="decision">
-        <h4>
-          Decision 1: Filtering to states where more than 70% of counties lack a clinic
-          <span class="score">Score: −1.5</span>
-        </h4>
+        <h4>Decision 1: Choropleth map instead of bar chart <span class="score">Score: +1</span></h4>
         <p>
-          By excluding states with lower percentages of county-level clinic absence, the chart
-          creates the impression that near-total geographic inaccessibility is a dominant
-          national pattern rather than a regional one. States like California, New York, and
-          Connecticut — where clinic distribution is much broader — are entirely absent from the
-          frame. The underlying values are accurate, but the restricted view makes the problem
-          appear more uniform and severe than a full dataset view would. I considered showing all
-          states but found that including states with low clinic-absence rates visually weakened
-          the intended argument.
+          I started with a bar chart and it felt flat. The argument is about geography, and a map
+          lets you actually see that the problem is spread across a huge portion of the country,
+          not just concentrated in a few states. The downside is that low-population states like
+          Wyoming get the same visual weight as Texas, which is a bit misleading, but I think
+          the overall impression the map creates is more honest to the geographic reality than
+          a ranked list would be.
         </p>
       </div>
 
       <div class="decision">
-        <h4>
-          Decision 2: Sorting states from highest to lowest percentage
-          <span class="score">Score: 1</span>
-        </h4>
+        <h4>Decision 2: Red color scale anchored at 20%, not 0% <span class="score">Score: -1</span></h4>
         <p>
-          Sorting places the most extreme cases at the top, making the pattern immediately
-          readable and ensuring viewers encounter the strongest evidence first. This is a
-          standard chart design choice that also serves a persuasive purpose: it frames the
-          worst-case states as the norm rather than the exception. Alphabetical ordering would
-          have obscured the severity of the pattern and made the chart harder to read.
+          The scale starts at 20% instead of 0%, which means states like California (38%) show up
+          as noticeably colored rather than nearly white. If I had used a 0-100% scale, the
+          variation across states would look more gradual and California would look almost fine.
+          Anchoring at 20% makes even the better-performing states look alarming. That is
+          intentionally deceptive, and I kept it because it made the map more persuasive.
         </p>
       </div>
 
       <div class="decision">
-        <h4>
-          Decision 3: Color encodes region (Southern vs. non-Southern), not the same variable as bar length
-          <span class="score">Score: 0.5</span>
-        </h4>
+        <h4>Decision 3: Measuring clinic absence rather than abortion rates <span class="score">Score: -0.5</span></h4>
         <p>
-          Color here encodes a categorical dimension — whether the state is in the South — rather
-          than repeating the percentage already shown by bar length. This adds genuine information:
-          it counters the possible objection that the chart only reflects a Southern phenomenon,
-          because non-Southern states appear throughout the distribution at similarly high levels.
-          The red hue family was chosen to maintain a sense of severity across both categories,
-          but the two-tone distinction between dark and lighter red makes the regional dimension
-          readable without requiring a separate axis.
+          I chose to show whether counties have a clinic at all rather than how many abortions
+          happen, because the clinic metric makes the problem look structural. If I had used
+          abortion rates, several high-absence states would still show decent numbers because
+          residents travel out of state, and that would undercut the argument. The county-level
+          absence measure closes that interpretive gap, though it also means the chart cannot
+          distinguish between a state where no one seeks abortions and one where they just have
+          to travel far to get them.
         </p>
       </div>
 
       <div class="decision">
-        <h4>
-          Decision 4: Annotations anchored to specific bars at each end of the distribution
-          <span class="score">−0.5</span>
-        </h4>
+        <h4>Decision 4: Hover tooltip includes out-of-state travel data <span class="score">Score: +1.5</span></h4>
         <p>
-          The annotation "Near-total clinic absence (99%)" is placed directly on the Arkansas bar,
-          the highest value in the chart. The annotation "Even at 75%, three in four counties lack
-          any clinic" is placed on the Oregon bar, the lowest value. Together these anchor the
-          reader's interpretation at both ends: even the least extreme state in this filtered view
-          still shows severe absence. The annotations describe the data rather than just labeling
-          it, which adds persuasive force without fabricating any information. The downside is that
-          anchoring at the extremes implicitly discourages the reader from thinking about what
-          was excluded.
+          The hover tooltip shows the percentage of women living without clinic access and the
+          share who traveled out of state for care, not just the county absence number. I included
+          the travel data even though it partially supports the other side, because hiding it felt
+          like the more obviously deceptive choice. It also actually reinforces the for-argument
+          when you look at it: states with 90%+ county absence tend to have 30-50% out-of-state
+          travel rates, which is itself a sign that in-state access is broken.
         </p>
       </div>
 
       <div class="decision">
-        <h4>
-          Decision 5: Measuring clinic absence rather than abortion counts or rates
-          <span class="score">Score: −0.5</span>
-        </h4>
+        <h4>Decision 5: Annotating Texas and New York specifically <span class="score">Score: -0.5</span></h4>
         <p>
-          Focusing on the percentage of counties without any clinic frames access as a question of
-          physical proximity and infrastructure rather than service volume. This metric makes the
-          problem appear more structural and harder to dismiss — even if abortions are still
-          occurring, people in counties without clinics must travel. I considered using total
-          abortion counts, but that would have allowed a counter-reading in which services appear
-          to still be happening. The county-level absence measure closes that interpretive gap.
+          Texas is the obvious choice because it is the most populous state with near-total county
+          absence (96%), so it is the strongest single example for the argument. I annotated New York
+          specifically to preempt the "what about blue states" objection. Even New York has 62% county
+          absence, and framing that as "relatively better, but still majority" is a bit slanted since
+          62% is genuinely much better than 96%. But I wanted to make sure the map did not look like
+          it was only making a point about red states.
         </p>
       </div>
     </section>
 
     <section>
-      <h2>4. Visualization B — Argues <em>against</em> the proposition</h2>
+      <h2>4. Visualization B -- Argues <em>against</em> the proposition</h2>
       <p>
-        This visualization argues that abortion services in the United States are actively used
-        across a wide range of states. Rather than measuring whether a county has a clinic, it
-        shifts the metric entirely to abortion rates — the number of abortions per 1,000 women
-        aged 15–19 by state of residence in 2017. By measuring utilization rather than
-        geographic availability, the chart reframes the question: people are still obtaining
-        abortions at meaningful rates across most of the country, regardless of how many
-        counties have a local clinic.
-      </p>
-      <p>
-        The chart includes all states and D.C. without filtering, sorted from lowest to highest
-        abortion rate so that the viewer's eye is drawn toward the high end. Color here encodes
-        a genuinely different variable — the percentage of counties without a clinic — so that
-        darker bars indicate states with better clinic access and lighter bars indicate states
-        with fewer clinics. This creates an additional layer of argument: some light-colored bars
-        (poor clinic access) still appear at moderate abortion rates, suggesting that people
-        travel to obtain services even where local infrastructure is limited.
+        This visualization uses a scatter plot to put the two key variables in direct tension:
+        clinic absence on the x-axis and actual abortion rates on the y-axis. If the proposition
+        were fully true, you would expect a strong downward slope, meaning states with almost no
+        clinics would also have very low abortion rates. The scatter shows that relationship is
+        a lot weaker than the map implies, which is the core of the against-argument.
       </p>
 
       <figure>
-        <img src="pset4figures/Visualization_2NEW.png"
-             alt="Horizontal bar chart showing abortion rates per 1,000 women aged 15-19 across all U.S. states, sorted lowest to highest, with color encoding clinic access rather than the same variable." />
+        <div class="vis-container">
+          <div>                            <div id="vis2" class="plotly-graph-div" style="height:580px; width:900px;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("vis2")) {                    Plotly.newPlot(                        "vis2",                        [{"customdata":[47,7,6,37,0,1,6,44,45,1,5,2,26,1,31,12,4,39,21,5,17,6,1,3,44,99,3,8,4,23,6,8,1,2,13,10,5,5,14,17,57,84,23,8,8,7,25,5,52,17,88],"hovertemplate":"\u003cb\u003e%{text}\u003c\u002fb\u003e\u003cbr\u003e%{x}% of counties lack a clinic\u003cbr\u003eAbortion rate: %{y} per 1,000 women\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"cmax":60,"cmin":0,"color":[47,7,6,37,0,1,6,44,45,1,5,2,26,1,31,12,4,39,21,5,17,6,1,3,44,99,3,8,4,23,6,8,1,2,13,10,5,5,14,17,57,84,23,8,8,7,25,5,52,17,88],"colorbar":{"len":0.6,"thickness":14,"ticksuffix":"%","title":{"font":{"size":11},"text":"% who traveled\u003cbr\u003eout of state"},"x":1.01},"colorscale":[[0.0,"rgb(247,251,255)"],[0.125,"rgb(222,235,247)"],[0.25,"rgb(198,219,239)"],[0.375,"rgb(158,202,225)"],[0.5,"rgb(107,174,214)"],[0.625,"rgb(66,146,198)"],[0.75,"rgb(33,113,181)"],[0.875,"rgb(8,81,156)"],[1.0,"rgb(8,48,107)"]],"line":{"color":"white","width":0.5},"showscale":true,"size":10},"mode":"markers+text","text":["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],"textfont":{"color":"#444","size":8},"textposition":"top center","x":[93,87,80,99,38,77,0,33,0,75,95,40,95,89,95,95,98,99,95,12,62,50,86,95,99,99,91,97,88,60,29,91,37,91,98,93,96,75,82,80,93,98,95,96,97,64,92,56,98,96,96],"y":[5.1,6.6,5.4,4,9.6,6.2,9.3,8.4,19.8,9.1,7.4,8.3,3.4,8.6,4.8,3.5,3.7,3.3,5.8,6.4,12.7,6.1,7.1,4.7,5.1,5.3,5.9,3.2,9,5.3,14.9,7.2,16.2,6.7,4.3,5.3,3.8,7.2,7.2,7.7,6.9,3.3,4.4,5.2,3.1,5.1,5.9,8.1,4.1,3.9,4.6],"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"annotations":[{"arrowcolor":"#888","arrowhead":2,"arrowwidth":1,"ax":39,"axref":"x","ay":6.6,"ayref":"y","bgcolor":"rgba(255,255,255,0.85)","bordercolor":"#bbb","borderwidth":1,"font":{"color":"#333","size":9},"showarrow":true,"text":"MS: 99% counties lack clinic,\u003cbr\u003eyet rate = 7.8","x":99,"xref":"x","y":5.1,"yref":"y"},{"arrowcolor":"#888","arrowhead":2,"arrowwidth":1,"ax":39,"axref":"x","ay":6.8,"ayref":"y","bgcolor":"rgba(255,255,255,0.85)","bordercolor":"#bbb","borderwidth":1,"font":{"color":"#333","size":9},"showarrow":true,"text":"MO: Near-zero rate —\u003cbr\u003elast clinic closed 2019","x":99,"xref":"x","y":5.3,"yref":"y"},{"arrowcolor":"#888","arrowhead":2,"arrowwidth":1,"ax":36,"axref":"x","ay":6.1,"ayref":"y","bgcolor":"rgba(255,255,255,0.85)","bordercolor":"#bbb","borderwidth":1,"font":{"color":"#333","size":9},"showarrow":true,"text":"WY: lowest rate\u003cbr\u003e& worst access","x":96,"xref":"x","y":4.6,"yref":"y"}],"title":{"font":{"size":17},"text":"\u003cb\u003eAbortion Rates Persist Even Where Clinics Are Scarce\u003c\u002fb\u003e\u003cbr\u003e\u003csup\u003eClinic absence (x) vs. abortion rate per 1,000 women 15–19 (y), by state of residence, 2017. Color = % who traveled out of state.\u003c\u002fsup\u003e","x":0.02,"xanchor":"left"},"xaxis":{"title":{"text":"% of counties without a known abortion clinic (2020)"},"ticksuffix":"%","range":[0,105],"showgrid":true,"gridcolor":"#eee"},"yaxis":{"title":{"text":"Abortion rate per 1,000 women aged 15–19 (2017)"},"showgrid":true,"gridcolor":"#eee"},"margin":{"l":60,"r":80,"t":90,"b":60},"paper_bgcolor":"white","plot_bgcolor":"white","width":900,"height":580},                        {"responsive": true}                    )                };            </script>        </div>
+        </div>
         <figcaption>
-          <strong>Figure 2.</strong> Abortion rates per 1,000 women aged 15–19 across all U.S. states
-          in 2017, sorted from lowest to highest. Color encodes the percentage of counties without a
-          known clinic in each state (darker = better clinic access; lighter = fewer clinics), showing
-          that abortion utilization is not perfectly correlated with clinic availability — people in
-          states with limited clinic infrastructure still obtain abortions at non-trivial rates.
+          <strong>Figure 2.</strong> Each point is a U.S. state or D.C. X-axis: % of counties
+          without a known abortion clinic (2020). Y-axis: abortion rate per 1,000 women aged 15-19
+          by state of residence (2017). Color: % of residents who traveled out of state for care (2020),
+          darker blue means more out-of-state travel. Hover for state-level details.
         </figcaption>
       </figure>
 
       <h3>4A. Key design decisions</h3>
 
       <div class="decision">
-        <h4>
-          Decision 1: Switching the metric from clinic presence to abortion rates
-          <span class="score">Score: −1</span>
-        </h4>
+        <h4>Decision 1: Scatter plot of clinic absence vs. abortion rate <span class="score">Score: -1</span></h4>
         <p>
-          By measuring abortion rates rather than clinic distribution, the visualization
-          sidesteps the geographic access argument entirely. Even in states where many counties
-          lack a clinic, abortions are still occurring — because people travel to obtain them.
-          This metric conflates accessibility with utilization, which is a rhetorical sleight of
-          hand: a high abortion rate does not mean access is easy, but the chart is designed to
-          make readers interpret it that way. I considered showing provider counts, but abortion
-          rates by state of residence more directly imply that services are being used, which is
-          the stronger counter-argument.
+          The scatter is the main deceptive move here. By showing that clinic absence and abortion
+          rates are not tightly correlated, I am implying that lack of clinics does not prevent
+          abortions from happening. But a high abortion rate in a high-absence state mostly means
+          residents are traveling to get care, not that access is fine. The chart makes travel look
+          like evidence of access when it is really evidence of a barrier. I went with this encoding
+          anyway because it was the most effective way to visually undercut the map's argument.
         </p>
       </div>
 
       <div class="decision">
-        <h4>
-          Decision 2: Including all states without filtering
-          <span class="score">Score: 1.5</span>
-        </h4>
+        <h4>Decision 2: Color encodes out-of-state travel, not the same variable as the axes <span class="score">Score: +1</span></h4>
         <p>
-          Unlike Visualization A, this chart includes all 50 states and D.C. with no filtering.
-          This makes the visualization appear more complete and balanced, and it also allows the
-          high-rate outliers — New York, New Jersey, D.C. — to be visible. Showing the full
-          dataset signals transparency while simultaneously letting the most compelling data
-          points remain in view. It would have been more deceptive to filter, so the earnest
-          choice here also serves the persuasive goal.
+          In my earlier version of this chart, color just repeated the bar length, which the grader
+          flagged as redundant and confusing. Here color shows out-of-state travel percentage, which
+          is a genuinely separate dimension. It also makes the chart more analytically interesting:
+          you can see that darker points (high travel) cluster at moderate abortion rates despite
+          high clinic absence, which helps explain the pattern without hiding the mechanism behind it.
         </p>
       </div>
 
       <div class="decision">
-        <h4>
-          Decision 3: Color encodes clinic availability rather than the same variable as bar length
-          <span class="score">Score: 1</span>
-        </h4>
+        <h4>Decision 3: Including all states without filtering <span class="score">Score: +1.5</span></h4>
         <p>
-          In this chart, bar length encodes the abortion rate while color encodes a separate
-          variable: the percentage of counties in that state without a known clinic. Darker blue
-          indicates better clinic access; lighter blue indicates fewer clinics. This adds a
-          genuine second dimension to the chart and creates an implicit argument: lighter bars
-          (poor clinic access) still show non-trivial abortion rates, which supports the claim
-          that limited clinic availability does not eliminate abortion access entirely. This is
-          an earnest encoding choice — color and length tell different parts of the story — and
-          it strengthens the persuasive case without fabricating information.
+          Everything is included here, including Missouri, which is basically the clearest
+          counter-example to the against-argument: its last clinic closed in 2019 and its abortion
+          rate dropped to near zero. I kept it because removing it would have been the more
+          deceptive choice, and because one data point in the lower right corner is easier to
+          explain away as an anomaly than to justify hiding. Showing all states also signals
+          transparency compared to the filtered map in Visualization A.
         </p>
       </div>
 
       <div class="decision">
-        <h4>
-          Decision 4: Annotation for Alaska anchored to its actual data value
-          <span class="score">Score: 0.5</span>
-        </h4>
+        <h4>Decision 4: Annotating Mississippi and Missouri as contrasts <span class="score">Score: -0.5</span></h4>
         <p>
-          Alaska is annotated specifically because it represents an extreme case: it is among
-          the states with the fewest clinics relative to its geography, yet it still records an
-          abortion rate of 6.6 per 1,000 women aged 15–19. The annotation is tied directly to
-          the Alaska bar and names its rate, so the reader can verify the claim against the axis.
-          This is a grounded annotation that makes a specific, checkable argument rather than a
-          vague one. The D.C. annotation is similarly anchored: it calls out the highest rate
-          (19.8) and is placed adjacent to that bar.
+          Mississippi is annotated because it is the strongest single data point for the against-argument:
+          99% county absence but still a non-trivial abortion rate. Missouri is annotated as the honest
+          counterexample. The framing is slightly slanted because I describe Missouri as a singular
+          case rather than a warning about what the whole map could look like if clinic closures continue,
+          but I think including both makes the chart more credible than if I had only shown the
+          favorable examples.
         </p>
       </div>
 
       <div class="decision">
-        <h4>
-          Decision 5: Sorting from lowest to highest rate
-          <span class="score">Score: −0.5</span>
-        </h4>
+        <h4>Decision 5: Title "Abortion Rates Persist Even Where Clinics Are Scarce" <span class="score">Score: -0.5</span></h4>
         <p>
-          Sorting from low to high means the most compelling data points — the states with the
-          highest abortion rates — appear at the bottom of the chart, which is where the reader's
-          eye lands last but also where it rests. This placement gives the high-rate states a
-          visual "punch" at the end of the chart and makes them feel like a conclusion rather
-          than an outlier. An alphabetical or reverse sort would have buried these states or made
-          them seem less central to the argument.
+          The word "persist" does a lot of work. It implies resilience, like services are holding on
+          despite obstacles, rather than something like "people are forced to travel further to get care."
+          I tried a more neutral title like "Clinic Scarcity and Abortion Rates by State" and it just
+          did not push the reader toward any conclusion at all, which defeated the point of the
+          exercise. The current title is editorially slanted but not so obviously that it would
+          immediately tip off a skeptical reader.
         </p>
       </div>
     </section>
@@ -323,44 +257,36 @@
     <section>
       <h2>5. Final Reflection</h2>
       <p>
-        The most striking outcome of this process was how completely the choice of metric
-        determined the argument. Visualization A and Visualization B use data collected by the
-        same organization about the same topic — abortion services in the United States — but
-        produce nearly opposite impressions. Visualization A asks: does your county have a clinic?
-        Visualization B asks: are abortions still happening in your state? These are genuinely
-        different questions, and neither is dishonest on its own terms. The deception lies not in
-        fabricating data but in presenting one question as if it were the only relevant one.
-        Filtering Visualization A to exclude states with better clinic distribution was the
-        decision I felt most uncomfortable with, because it allowed a regional pattern to read
-        as a national one — which crossed the line from emphasis into misrepresentation.
+        The thing that surprised me most was how much the choice of metric alone determined the
+        conclusion, before any design decision about color or sorting or filtering even came into play.
+        Visualization A asks whether your county has a clinic. Visualization B asks whether people
+        in your state are still obtaining abortions. Both questions are answered honestly by the data,
+        but they lead to completely opposite takeaways. In Visualization B, out-of-state travel shows
+        up as a non-zero abortion rate and looks like evidence that access is fine, when it is actually
+        evidence that people are facing real barriers. That felt like the most uncomfortable thing I
+        did in this assignment, because the numbers themselves are not wrong, but the interpretation
+        the chart encourages is.
       </p>
       <p>
-        Revising these visualizations also clarified something concrete about color encoding:
-        when color encodes the same variable as bar length, it adds emotional weight but no
-        new information — which is a form of redundancy that a reader might intuitively sense
-        even if they can't articulate it. Giving color a distinct role (region in Vis A, clinic
-        availability in Vis B) makes each chart carry more analytical content while also making
-        the persuasive argument subtler and harder to dismiss. I now define ethical visualization
-        as requiring not just accurate numbers but also visible acknowledgment of what the data
-        cannot show. In this case, neither chart can show a trend over time — the data are
-        snapshots — and the original titles implied change that the data did not support. That
-        gap between what a title implies and what the data can actually demonstrate is, I think,
-        where the sharpest ethical line sits: persuasive framing that a careful reader could
-        recover from is acceptable; framing that systematically prevents recovery crosses into
-        deception.
+        I also came away with a much more concrete sense of what makes color encoding honest or not.
+        In my first version of these charts, color just repeated whatever the bar length was already
+        showing, which added emotional weight but no real information. Giving color a distinct role,
+        like out-of-state travel in Visualization B, makes the chart feel more trustworthy and also
+        more analytically useful. I think the line between persuasion and deception comes down to
+        whether a careful reader could figure out what you left out. Sorting and filtering that are
+        mentioned in the caption are persuasive. Metrics chosen specifically to close off a
+        counter-reading, or color scales anchored to make moderate values look alarming, start
+        crossing into deception because they work on readers who are not already suspicious.
       </p>
     </section>
 
     <section>
       <h2>6. Data Transformations &amp; Notes</h2>
       <ul class="tight">
-        <li><strong>Visualization A filter:</strong> Limited to states where ≥70% of counties lacked a known abortion clinic in 2020 (37 of 50 states + D.C. met this threshold). States below this cutoff — including California, New York, Connecticut, and others — were excluded.</li>
-        <li><strong>Visualization A sort:</strong> States sorted descending by percent of counties without a clinic.</li>
-        <li><strong>Visualization A color:</strong> Categorical — dark red for Southern states, lighter red for non-Southern states. Sourced from U.S. Census Bureau regional classification.</li>
-        <li><strong>Visualization B:</strong> All 50 states and D.C. included, sorted ascending by abortion rate per 1,000 women aged 15–19 (2017 data).</li>
-        <li><strong>Visualization B color:</strong> Continuous blue scale encoding the percentage of counties without a known abortion clinic (2020). Darker = better clinic access; lighter = fewer clinics.</li>
-        <li><strong>No derived fields:</strong> Both primary variables were taken directly from the Guttmacher dataset without additional calculation.</li>
-        <li><strong>Known limitation:</strong> The two visualizations use data from different years (2020 and 2017) because those were the most complete available for each respective measure. This makes direct comparison across visualizations imprecise.</li>
+        <li><strong>Visualization A:</strong> All 50 states included (D.C. excluded, no county-level geography for choropleth). Variable: % of counties without a known abortion clinic (2020).</li>
+        <li><strong>Visualization B:</strong> All 50 states + D.C. included. X: % of counties without a clinic (2020). Y: abortion rate per 1,000 women aged 15-19 (2017). Color: % who traveled out of state (2020).</li>
+        <li><strong>Known limitation:</strong> Clinic absence (2020) and abortion rate (2017) are from different years, so direct comparison within each scatter point is imprecise.</li>
+        <li><strong>No derived fields:</strong> All variables taken directly from the Guttmacher dataset without additional calculation.</li>
       </ul>
     </section>
 
