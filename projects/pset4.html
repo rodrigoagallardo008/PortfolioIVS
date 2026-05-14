@@ -12,18 +12,6 @@
       display: block;
     }
 
-    figure.half {
-      max-width: 50%;
-      margin: 1rem auto;
-    }
-    figure.half img { width: 100%; }
-
-    figure.third {
-      max-width: 38%;
-      margin: 1rem auto;
-    }
-    figure.third img { width: 100%; }
-
     figure figcaption { font-weight: normal; }
 
     .note {
@@ -33,19 +21,6 @@
     }
 
     .tight li { margin-bottom: 0.45rem; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    @media (min-width: 900px) {
-      .grid.two {
-        grid-template-columns: 1fr 1fr;
-        align-items: start;
-      }
-    }
 
     .score {
       display: inline-block;
@@ -130,17 +105,20 @@
       <p>
         The bars all cluster between 75% and 100%, which intentionally compresses the visible variation
         to make even the "better" states in this filtered view still appear to have high rates of clinic
-        absence. The red gradient reinforces a sense of severity: even the lightest bars represent
-        three-quarters of counties with no local provider.
+        absence. Color encodes whether a state is in the South or not — a dimension beyond bar length —
+        to highlight that the pattern is not purely regional: non-Southern states appear throughout
+        the chart at similarly extreme levels.
       </p>
 
       <figure>
-        <img src="pset4figures/Visualization 1.png"
-             alt="Horizontal bar chart showing states where over 70% of counties lack an abortion clinic, sorted from highest to lowest, with a red gradient color scale." />
+        <img src="Visualization_1.png"
+             alt="Horizontal bar chart showing states where over 70% of counties lack an abortion clinic, sorted from highest to lowest, with color indicating Southern vs. non-Southern states." />
         <figcaption>
           <strong>Figure 1.</strong> In 2020, more than 70% of counties in 37 U.S. states had no known
-          abortion clinic — with many states exceeding 95%. This chart is filtered to show only those
-          states and sorted from highest to lowest to emphasize the scale of geographic absence.
+          abortion clinic. This chart is filtered to show only those states and sorted from highest to
+          lowest to emphasize the scale of geographic absence. Color distinguishes Southern states
+          (dark red) from non-Southern states (lighter red), showing the pattern is not confined
+          to one region. Even Oregon — the lowest bar — still lacks clinics in 75% of its counties.
         </figcaption>
       </figure>
 
@@ -179,33 +157,34 @@
 
       <div class="decision">
         <h4>
-          Decision 3: Red gradient color scale encoding the same variable as bar length
-          <span class="score">Score: −1</span>
+          Decision 3: Color encodes region (Southern vs. non-Southern), not the same variable as bar length
+          <span class="score">Score: 0.5</span>
         </h4>
         <p>
-          The color gradient encodes the same variable as bar length — the percentage of counties
-          without clinics — which is redundant from a perceptual standpoint. However, this
-          redundancy is intentional: the red hue carries emotional associations with urgency and
-          alarm, amplifying the severity of the message beyond what bar length alone would convey.
-          Using red also creates visual weight across the chart, making the overall impression
-          feel dense and serious. A neutral color would have communicated the same data with less
-          emotional charge.
+          Color here encodes a categorical dimension — whether the state is in the South — rather
+          than repeating the percentage already shown by bar length. This adds genuine information:
+          it counters the possible objection that the chart only reflects a Southern phenomenon,
+          because non-Southern states appear throughout the distribution at similarly high levels.
+          The red hue family was chosen to maintain a sense of severity across both categories,
+          but the two-tone distinction between dark and lighter red makes the regional dimension
+          readable without requiring a separate axis.
         </p>
       </div>
 
       <div class="decision">
         <h4>
-          Decision 4: Title and annotations that interpret rather than describe
-          <span class="score">Score: −1</span>
+          Decision 4: Annotations anchored to specific bars at each end of the distribution
+          <span class="score">−0.5</span>
         </h4>
         <p>
-          The title "Declining Access to Abortion Clinics" and the annotation labels "Near-total
-          clinic absence across counties" and "Severe geographic barriers to access" do more than
-          label the data — they instruct the reader on how to interpret it. These textual choices
-          carry rhetorical weight by connecting geographic absence to the broader argument that
-          access is broken. The title in particular uses the word "declining," which implies a
-          trend over time that the single-year data cannot directly support. I chose to keep it
-          because the framing is persuasive, though it is a stretch of the data.
+          The annotation "Near-total clinic absence (99%)" is placed directly on the Arkansas bar,
+          the highest value in the chart. The annotation "Even at 75%, three in four counties lack
+          any clinic" is placed on the Oregon bar, the lowest value. Together these anchor the
+          reader's interpretation at both ends: even the least extreme state in this filtered view
+          still shows severe absence. The annotations describe the data rather than just labeling
+          it, which adds persuasive force without fabricating any information. The downside is that
+          anchoring at the extremes implicitly discourages the reader from thinking about what
+          was excluded.
         </p>
       </div>
 
@@ -228,31 +207,33 @@
     <section>
       <h2>4. Visualization B — Argues <em>against</em> the proposition</h2>
       <p>
-        This visualization argues that abortion services in the United States remain substantial
-        and active across a wide range of states. Rather than measuring whether a county has a
-        clinic, it shifts the metric entirely to abortion rates — the number of abortions per 1,000
-        women aged 15–19 by state of residence in 2017. By measuring utilization rather than
-        geographic availability, the chart reframes the question: services may not be evenly
-        distributed by clinic location, but people are still actively obtaining abortions at
-        meaningful rates across most of the country.
+        This visualization argues that abortion services in the United States are actively used
+        across a wide range of states. Rather than measuring whether a county has a clinic, it
+        shifts the metric entirely to abortion rates — the number of abortions per 1,000 women
+        aged 15–19 by state of residence in 2017. By measuring utilization rather than
+        geographic availability, the chart reframes the question: people are still obtaining
+        abortions at meaningful rates across most of the country, regardless of how many
+        counties have a local clinic.
       </p>
       <p>
         The chart includes all states and D.C. without filtering, sorted from lowest to highest
-        abortion rate so that the viewer's eye is drawn naturally toward the high end. Several
-        states — including New York (16.2), New Jersey (14.9), and the District of Columbia (19.8)
-        — show particularly high rates, and these outliers are annotated to anchor the takeaway.
-        The blue palette communicates stability and neutrality, reinforcing the argument that
-        services remain present and functional.
+        abortion rate so that the viewer's eye is drawn toward the high end. Color here encodes
+        a genuinely different variable — the percentage of counties without a clinic — so that
+        darker bars indicate states with better clinic access and lighter bars indicate states
+        with fewer clinics. This creates an additional layer of argument: some light-colored bars
+        (poor clinic access) still appear at moderate abortion rates, suggesting that people
+        travel to obtain services even where local infrastructure is limited.
       </p>
 
       <figure>
-        <img src="pset4figures/Visualization 2.png"
-             alt="Horizontal bar chart showing abortion rates per 1,000 women aged 15-19 across all U.S. states, sorted from lowest to highest, with a blue gradient color scale." />
+        <img src="Visualization_2.png"
+             alt="Horizontal bar chart showing abortion rates per 1,000 women aged 15-19 across all U.S. states, sorted lowest to highest, with color encoding clinic access rather than the same variable." />
         <figcaption>
           <strong>Figure 2.</strong> Abortion rates per 1,000 women aged 15–19 across all U.S. states
-          in 2017, sorted from lowest to highest. Several states and D.C. show high rates of abortion
-          service utilization, suggesting that services remain actively accessed across much of the
-          country — even in states with limited clinic distribution.
+          in 2017, sorted from lowest to highest. Color encodes the percentage of counties without a
+          known clinic in each state (darker = better clinic access; lighter = fewer clinics), showing
+          that abortion utilization is not perfectly correlated with clinic availability — people in
+          states with limited clinic infrastructure still obtain abortions at non-trivial rates.
         </figcaption>
       </figure>
 
@@ -292,33 +273,34 @@
 
       <div class="decision">
         <h4>
-          Decision 3: Blue gradient that again encodes the same variable as bar length
-          <span class="score">Score: −0.5</span>
+          Decision 3: Color encodes clinic availability rather than the same variable as bar length
+          <span class="score">Score: 1</span>
         </h4>
         <p>
-          As in Visualization A, the color gradient duplicates the bar length encoding.
-          Perceptually this is redundant, but rhetorically it is strategic: darker blue bars
-          draw the eye to the highest-rate states, reinforcing the takeaway that some states have
-          very high service utilization. Blue also carries associations of calm and stability,
-          which softens the emotional register of the chart compared to red and subtly implies
-          that the situation depicted is manageable rather than alarming.
+          In this chart, bar length encodes the abortion rate while color encodes a separate
+          variable: the percentage of counties in that state without a known clinic. Darker blue
+          indicates better clinic access; lighter blue indicates fewer clinics. This adds a
+          genuine second dimension to the chart and creates an implicit argument: lighter bars
+          (poor clinic access) still show non-trivial abortion rates, which supports the claim
+          that limited clinic availability does not eliminate abortion access entirely. This is
+          an earnest encoding choice — color and length tell different parts of the story — and
+          it strengthens the persuasive case without fabricating information.
         </p>
       </div>
 
       <div class="decision">
         <h4>
-          Decision 4: Annotation strategy — Maryland as consistency, Alaska as contrast
-          <span class="score">Score: −0.5</span>
+          Decision 4: Annotation for Alaska anchored to its actual data value
+          <span class="score">Score: 0.5</span>
         </h4>
         <p>
-          Maryland is annotated as showing "consistent abortion service levels" because it sits
-          clearly above the middle of the distribution, making it a readable reference point for
-          a "typical high-access state." Alaska is annotated to highlight that even a geographically
-          remote state with very few clinics still records a non-trivial abortion rate — a subtle
-          argument that physical distance does not eliminate access entirely. The Alaska annotation
-          was chosen specifically because it is a state that intuitively seems hard to access, so
-          noting that services still occur there implicitly undermines the geographic barriers
-          argument made in Visualization A.
+          Alaska is annotated specifically because it represents an extreme case: it is among
+          the states with the fewest clinics relative to its geography, yet it still records an
+          abortion rate of 6.6 per 1,000 women aged 15–19. The annotation is tied directly to
+          the Alaska bar and names its rate, so the reader can verify the claim against the axis.
+          This is a grounded annotation that makes a specific, checkable argument rather than a
+          vague one. The D.C. annotation is similarly anchored: it calls out the highest rate
+          (19.8) and is placed adjacent to that bar.
         </p>
       </div>
 
@@ -353,18 +335,19 @@
         as a national one — which crossed the line from emphasis into misrepresentation.
       </p>
       <p>
-        This assignment changed how I think about the word "misleading." A visualization does
-        not need false numbers to mislead — it can mislead through selection, framing, and the
-        emotional associations of color. The red gradient in Visualization A and the blue gradient
-        in Visualization B encode exactly the same type of information (a continuous magnitude),
-        but they produce opposite emotional responses. I now define ethical visualization as
-        requiring not just accurate data but also visible acknowledgment of what the data cannot
-        show: in this case, neither chart can show a trend over time, and the titles would have
-        been more honest if they reflected that limitation. The boundary I would draw between
-        acceptable persuasion and misleading visualization is whether a design choice actively
-        prevents a careful reader from recovering the full picture. Sorting and filtering that
-        are disclosed in the caption or title are persuasive; filtering that is invisible and
-        makes a partial dataset look complete crosses into deception.
+        Revising these visualizations also clarified something concrete about color encoding:
+        when color encodes the same variable as bar length, it adds emotional weight but no
+        new information — which is a form of redundancy that a reader might intuitively sense
+        even if they can't articulate it. Giving color a distinct role (region in Vis A, clinic
+        availability in Vis B) makes each chart carry more analytical content while also making
+        the persuasive argument subtler and harder to dismiss. I now define ethical visualization
+        as requiring not just accurate numbers but also visible acknowledgment of what the data
+        cannot show. In this case, neither chart can show a trend over time — the data are
+        snapshots — and the original titles implied change that the data did not support. That
+        gap between what a title implies and what the data can actually demonstrate is, I think,
+        where the sharpest ethical line sits: persuasive framing that a careful reader could
+        recover from is acceptable; framing that systematically prevents recovery crosses into
+        deception.
       </p>
     </section>
 
@@ -373,8 +356,10 @@
       <ul class="tight">
         <li><strong>Visualization A filter:</strong> Limited to states where ≥70% of counties lacked a known abortion clinic in 2020 (37 of 50 states + D.C. met this threshold). States below this cutoff — including California, New York, Connecticut, and others — were excluded.</li>
         <li><strong>Visualization A sort:</strong> States sorted descending by percent of counties without a clinic.</li>
+        <li><strong>Visualization A color:</strong> Categorical — dark red for Southern states, lighter red for non-Southern states. Sourced from U.S. Census Bureau regional classification.</li>
         <li><strong>Visualization B:</strong> All 50 states and D.C. included, sorted ascending by abortion rate per 1,000 women aged 15–19 (2017 data).</li>
-        <li><strong>No derived fields:</strong> Both variables were taken directly from the Guttmacher dataset without additional calculation.</li>
+        <li><strong>Visualization B color:</strong> Continuous blue scale encoding the percentage of counties without a known abortion clinic (2020). Darker = better clinic access; lighter = fewer clinics.</li>
+        <li><strong>No derived fields:</strong> Both primary variables were taken directly from the Guttmacher dataset without additional calculation.</li>
         <li><strong>Known limitation:</strong> The two visualizations use data from different years (2020 and 2017) because those were the most complete available for each respective measure. This makes direct comparison across visualizations imprecise.</li>
       </ul>
     </section>
